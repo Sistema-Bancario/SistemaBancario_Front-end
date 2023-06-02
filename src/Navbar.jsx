@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from 'react-router-dom';
+
 
 export const NavBar = () => {
   
@@ -23,8 +25,8 @@ export const NavBar = () => {
                   <i className="material-icons"></i>
                 </button>
                 <ul>
-                  <li className="active"><a href="#">User</a></li>
-                  <li><a href="#">Admin</a></li>
+                  <li className="active"><Link to="/loginUser">User</Link></li>
+                  <li><a >Admin</a></li>
                 </ul>
               </div>
             </li>
