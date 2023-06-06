@@ -1,9 +1,14 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { Button } from "react-bootstrap";
+import { MDBBtn } from "mdb-react-ui-kit";
 
 
 export const NavBar = () => {
-  
+  const logOut = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/";
+  };
   return (
     <>
       <nav className="navbar">
@@ -15,9 +20,15 @@ export const NavBar = () => {
             <span className="line line3"></span>
           </div>
           <ul className="menu-items">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Category</a></li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="#">About</Link>
+            </li>
+            <li>
+              <Link to="#">Category</Link>
+            </li>
             <li>
               <div className="dropdown">
                 <button className="btn">
@@ -25,16 +36,41 @@ export const NavBar = () => {
                   <i className="material-icons"></i>
                 </button>
                 <ul>
-                  <li className="active"><Link to="/loginUser">User</Link></li>
-                  <li><a >Admin</a></li>
+                  <li className="active">
+                    <Link to="/loginUser">User</Link>
+                  </li>
+                  <li>
+                    <Link to="/loginAdminUser">Admin</Link>
+                  </li>
                 </ul>
               </div>
             </li>
+            <li>
+                    {localStorage.getItem("token") && (
+                      <form className="w-25">
+                        <Link
+                          aria-current="page"
+                          to="/"
+                          onClick={() => logOut()}
+                        >
+                          <Button
+                            color="warning"
+                            aria-current="page"
+                            to="/"
+                            onClick={() => logOut()}
+                          >
+                            Cerrar Sesion{" "}
+                          </Button>
+                        </Link>
+                      </form>
+                    )}
+                  </li>
           </ul>
-          <h1 className="logo">Bank</h1>
+          <Link to="/">
+            <h1 className="logo">Bank</h1>
+          </Link>
         </div>
       </nav>
-
     </>
   );
 };

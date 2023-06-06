@@ -4,15 +4,13 @@ export const HomePage = () => {
 
     return (
         <>
-        <div id="myCarousel" className="carousel slide">
-        {/* <!-- Indicators --> */}
+        {/* <div id="myCarousel" className="carousel slide">
         <ol className="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" className="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
             <li data-target="#myCarousel" data-slide-to="2"></li>
         </ol>
 
-        {/* <!-- Wrapper for slides --> */}
         <div className="carousel-inner">
             <div className="item active">
                 <div className="fill" ></div>
@@ -34,14 +32,14 @@ export const HomePage = () => {
             </div>
         </div>
 
-        {/* <!-- Controls --> */}
         <a className="left carousel-control" href="#myCarousel" data-slide="prev">
             <span className="icon-prev"></span>
         </a>
         <a className="right carousel-control" href="#myCarousel" data-slide="next">
             <span className="icon-next"></span>
         </a>
-    </div>
+    </div> */}
+    <h1>HOMEPAGEs</h1>
       </>
     );
 };

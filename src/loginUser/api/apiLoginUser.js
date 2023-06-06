@@ -1,5 +1,6 @@
 import axios from "axios";
 import Swal from "sweetalert2";
+
 export const apiLoginUser = async (correo, password) => {
   try {
     const URL = "http://localhost:8080/api/auth/login";
