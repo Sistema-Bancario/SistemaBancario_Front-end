@@ -1,13 +1,16 @@
 import React from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { LoginUser } from "./loginUser/components/LoginUser";
-import { NavBar } from "./NavBar";
+import { NavBar } from "./Navbar";
 import { Footer } from "./Footer";
 import { HomePage } from "./HomePage";
 import { isAdminAuthenticated } from "./LoginAdminUser/helpers/loginAdminHelper";
 import { PaginaPrincipal } from "./paginaPrincipal/components/PaginaPrincipal";
 import { LoginAdminUser } from "./LoginAdminUser/components/LoginAdminUser";
-
+import { ListaUsers}  from "./CRUD-users/components/ListaUsers";
+import { CreateUser } from "./CRUD-users/components/agregarUser";
+import { ListaAdmins } from "./CRUD-UserAdmin/components/ListaAdmin";
+import { CreateAdmin } from "./CRUD-UserAdmin/components/AgregarAdmin";
 export const AppRouter = () => {
   return (
     <BrowserRouter>
@@ -27,7 +30,55 @@ export const AppRouter = () => {
             )
           }
         />
+         <Route
+        path = "/ListaUsuarios"
+        element= {
+          isAdminAuthenticated() ? (
+            <ListaUsers></ListaUsers>
+          ) :(
+            <Navigate to="/LoginAdminUser"></Navigate>
+          )
+        }
+        
+      />
+      <Route
+        path = "/createUser"
+        element= {
+          isAdminAuthenticated() ? (
+            <CreateUser></CreateUser>
+          ) :(
+            <Navigate to="/LoginAdminUser"></Navigate>
+          )
+        }
+        
+      />
+      <Route
+        path = "/ListaUsuariosAdmin"
+        element= {
+          isAdminAuthenticated() ? (
+            <ListaAdmins></ListaAdmins>
+          ) :(
+            <Navigate to="/LoginAdminUser"></Navigate>
+          )
+        }
+        
+      />
+      <Route
+        path = "/createUserAdmin"
+        element= {
+          isAdminAuthenticated() ? (
+            <CreateAdmin></CreateAdmin>
+          ) :(
+            <Navigate to="/LoginAdminUser"></Navigate>
+          )
+        }
+        
+      />
+
+      
       </Routes>
+
+     
 
       <Footer />
     </BrowserRouter>

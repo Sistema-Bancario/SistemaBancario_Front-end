@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { Button } from "react-bootstrap";
 import { MDBBtn } from "mdb-react-ui-kit";
 
@@ -24,10 +24,10 @@ export const NavBar = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="#">About</Link>
+              <Link to="/ListaUsuarios">Usuarios</Link>
             </li>
             <li>
-              <Link to="#">Category</Link>
+            <Link to="/ListaUsuariosAdmin">Administradores</Link>
             </li>
             <li>
               <div className="dropdown">
