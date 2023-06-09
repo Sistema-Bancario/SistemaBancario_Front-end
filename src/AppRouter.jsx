@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { isAuthenticated } from "./LoginAdminUser/helpers/loginAdminHelper";
 
-
 import { Navbar } from "./HomePage/Components/Navbar";
 import { HomePage } from "./HomePage";
 import { AdminPage } from "./AdminPage/AdminPage";
@@ -13,29 +12,33 @@ import { ListaAdmins } from "./CRUD-UserAdmin/components/ListaAdmin";
 import { CreateAdmin } from "./CRUD-UserAdmin/components/AgregarAdmin";
 import { Footer } from "./HomePage/Components/Footer";
 import { LoginAdmin } from "./LoginAdminUser/components/LoginAdmin";
-import { isUserAuthenticated } from "./loginUser/helpers/loginUserHelper";
 import NavbarAdmin from "./NavbarAdmin";
 import NavbarUser from "./NavbarUser";
 import UserPage from "./UserPage/UserPage";
+import { isUserAuthenticated } from "./loginUser/helpers/loginUserHelper";
 
 export const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* HOME PAGE--- PRINCIPAL */}
-        <Route path="/" element={
-          <>
-            <Navbar />
-            <HomePage />
-            <Footer />
-          </>
-        } />
-        {/* USERPAGE */}
+        {/* HOME PAGE --- PRINCIPAL */}
+        <Route
+          path="/"
+          element={
+            <>
+              <Navbar />
+              <HomePage />
+              <Footer />
+            </>
+          }
+        />
+
+        {/* USER PAGE */}
         <Route
           path="/UserPage"
           element={
             <>
-              <NavbarUser></NavbarUser>
+              <NavbarUser />
               <UserPage />
             </>
           }
@@ -52,13 +55,12 @@ export const AppRouter = () => {
           }
         />
 
-
-        {/* ADMINPAGE */}
+        {/* ADMIN PAGE */}
         <Route
           path="/AdminPage"
           element={
             <>
-              <NavbarAdmin></NavbarAdmin>
+              <NavbarAdmin />
               <AdminPage />
             </>
           }
@@ -131,7 +133,6 @@ export const AppRouter = () => {
           }
         />
       </Routes>
-
     </BrowserRouter>
   );
 };

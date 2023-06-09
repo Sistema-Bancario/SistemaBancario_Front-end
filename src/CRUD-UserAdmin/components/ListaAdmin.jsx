@@ -45,14 +45,18 @@ export const ListaAdmins = () => {
       </section>
 
       <div className="container mt-4 mb-5">
-        <button style id="boton-agregar">
+        <button style id="boton-agregar"/>
 
           <Link to='/createUserAdmin'>Agregar Administradores </Link>
+        <button  id="boton-agregar">
+          
+          <Link  to='/createUserAdmin'>Agregar Administradores </Link>
         </button>
         <table className="table">
           <thead className="thead-dark">
             <tr>
               <th scope="col">id</th>
+            <th scope="col">id</th>
               <th scope="col">Nombre</th>
               <th scope="col">correo</th>
             </tr>
@@ -67,7 +71,10 @@ export const ListaAdmins = () => {
                   <th scope="row">{userAdmin._id}</th>
                   <td>{userAdmin.nombre}</td>
                   <td>{userAdmin.correo}</td>
-                  
+                  <td>
+                  </td>
+                  <td>
+                  </td>
                 </tr>
               )
             })}
