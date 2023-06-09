@@ -647,6 +647,18 @@ z-index: 3;
 
   /* ---------------------------------------------------------dfdsajkfhdfjksdahfkjsdhfjkhsdkaj */
 
+  .botoagregarUsuarios{
+    color: #ffffff;
+  }
+
+  .listausuarios{
+    text-align: center;
+  }
+
+  .sidebar-container {
+    display: flex;
+  }
+  
   .sidebar-navigation {
     position: fixed;
     top: 0;
@@ -663,12 +675,22 @@ z-index: 3;
     color: white;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
   }
   
   .sidebar-navigation ul li {
     padding: 28px 0;
     cursor: pointer;
     transition: all ease-out 120ms;
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   .sidebar-navigation ul li i {
@@ -680,6 +702,7 @@ z-index: 3;
   .sidebar-navigation ul li .tooltip {
     display: inline-block;
     position: absolute;
+    color: #000;
     background-color: #f33636;
     padding: 8px 15px;
     border-radius: 3px;
@@ -727,13 +750,15 @@ z-index: 3;
     padding: 16px;
     background-color: #22252E;
     z-index: 9999;
+    width: 100%;
+    margin-left: 0px; /* Ajusta el margen izquierdo para alinear con el sidebar */
   }
   
   .sidebar-title {
     color: white;
     font-size: 18px;
     font-weight: bold;
-    margin: 0;
+    margin-left: 80px;
     text-align: center; 
   }
   
@@ -750,17 +775,16 @@ z-index: 3;
     object-fit: cover;
   }
   
-  @media screen and (min-width: 768px) {
-    .sidebar-navigation {
-      width: 200px;
-    }
-  
-    .sidebar-navigation ul li {
-      padding: 20px 0;
-    }
-  }
-  
   @media screen and (max-width: 767px) {
+    .sidebar-container {
+      flex-direction: column;
+    }
+  
+    .sidebar-header {
+      margin-left: 0;
+      width: 100%;
+    }
+  
     .sidebar-navigation {
       width: 100%;
       height: auto;
@@ -768,7 +792,7 @@ z-index: 3;
     }
   
     .sidebar-navigation ul {
-      display: flex;
+      flex-direction: row;
       flex-wrap: wrap;
       justify-content: center;
     }
@@ -777,5 +801,8 @@ z-index: 3;
       width: 33.33%;
       padding: 20px 0;
     }
+  
+    
   }
-
+  
+  

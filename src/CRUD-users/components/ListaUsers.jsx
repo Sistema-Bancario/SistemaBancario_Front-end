@@ -53,7 +53,7 @@ export const ListaUsers = () => {
     } else {
       Swal.fire({
         icon: "error",
-        title: "Oops...",
+        title: "Oops...", 
         text: "No se pudo eliminar!",
       });
     }
@@ -62,9 +62,7 @@ export const ListaUsers = () => {
   return (
     <>
       <div className="container mt-4 mb-5     ">
-        <button id="boton-agregar">
-          <Link to='/createUser'>Agregar Usuario</Link>
-        </button>
+        <h1 className="listausuarios">LISTA DE USUARIOS</h1>
         <div className="table-responsive">
           <table className="table">
             <thead className="thead-dark">

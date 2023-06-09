@@ -1,42 +1,60 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from "react-bootstrap";
+
 
 const NavbarAdmin = () => {
-    return (
-        <>
-          <div id="sidebar">
-            <div class="sidebar-header">
-              <h1 class="sidebar-title">Título del Sidebar</h1>
-              <div class="circle-image">
-                <img src="ruta_de_la_imagen" alt="Imagen de perfil" />
-              </div>
+  const logOut = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/";
+  };
+  return (
+    <>
+      <div className="contaaainer">
+        <div id="sidebar">
+          <div className="sidebar-header">
+            <h1 className="sidebar-title">BAC</h1>
+            <div className="circle-image">
+              <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="fotoperfil" />
             </div>
-            <nav class="sidebar-navigation">
-              <ul>
-                <li class="active">
-                  <i class="fa fa-share-alt"></i>
-                  <span class="tooltip">Connections</span>
-                </li>
-                <li>
-                  <i class="fa fa-hdd-o"></i>
-                  <span class="tooltip">Devices</span>
-                </li>
-                <li>
-                  <i class="fa fa-newspaper-o"></i>
-                  <span class="tooltip">Contacts</span>
-                </li>
-                <li>
-                  <i class="fa fa-print"></i>
-                  <span class="tooltip">Fax</span>
-                </li>
-                <li>
-                  <i class="fa fa-sliders"></i>
-                  <span class="tooltip">Settings</span>
-                </li>
-              </ul>
-            </nav>
+            {localStorage.getItem("token") && (
+                <form className="w-25">
+                  <Link
+                    aria-current="page"
+                    to="/"
+                    onClick={() => logOut()}
+                  >
+                    <Button
+                      color="warning"
+                      aria-current="page"
+                      to="/"
+                      onClick={() => logOut()}
+                    >
+                      Cerrar Sesion{" "}
+                    </Button>
+                  </Link>
+                </form>
+              )}
           </div>
-        </>
-      );
-    };
 
-export default NavbarAdmin
+          <nav className="sidebar-navigation">
+            <ul>
+              <li className="active">
+                <Link className='botoagregarUsuarios' to="/createUser">
+                  <i className="fa fa-user-plus"></i>
+                  <span className="tooltip">Agregar Usuarios</span>
+                </Link>
+              </li>
+              <li>
+                <i className="fa fa-plus-circle"></i>
+                <span className="tooltip">Crear Cuenta</span>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default NavbarAdmin;

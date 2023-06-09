@@ -2,12 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { Button } from "react-bootstrap";
 
-
 export const Navbar = () => {
-  const logOut = () => {
-    localStorage.removeItem("token");
-    window.location.href = "/";
-  };
   return (
     <>
       <nav className="navbar">
@@ -38,26 +33,6 @@ export const Navbar = () => {
                   <li className="active"><Link to="/LoginAdminUser">Admin</Link></li>
                 </ul>
               </div>
-            </li>
-            <li>
-              {localStorage.getItem("token") && (
-                <form className="w-25">
-                  <Link
-                    aria-current="page"
-                    to="/"
-                    onClick={() => logOut()}
-                  >
-                    <Button
-                      color="warning"
-                      aria-current="page"
-                      to="/"
-                      onClick={() => logOut()}
-                    >
-                      Cerrar Sesion{" "}
-                    </Button>
-                  </Link>
-                </form>
-              )}
             </li>
           </ul>
           <Link to="/">

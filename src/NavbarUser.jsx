@@ -6,7 +6,7 @@
         <div class="contaaainer">
           <div id="sidebar">
             <div class="sidebar-header">
-              <h1 class="sidebar-title">Título del Sidebar</h1>
+              <h1 class="sidebar-title">BAC</h1>
               <div class="circle-image">
                 <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="fotoperfil" />
               </div>
@@ -16,11 +16,11 @@
               <ul>
                 <li class="active">
                   <i class="fa fa-share-alt"></i>
-                  <span class="tooltip">Connections</span>
+                  <span class="tooltip">Agregar Usuarios</span>
                 </li>
                 <li>
                   <i class="fa fa-hdd-o"></i>
-                  <span class="tooltip">Devices</span>
+                  <span class="tooltip">Crear Cuenta</span>
                 </li>
                 <li>
                   <i class="fa fa-newspaper-o"></i>
