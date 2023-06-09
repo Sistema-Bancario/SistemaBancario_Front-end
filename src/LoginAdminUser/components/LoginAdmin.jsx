@@ -13,7 +13,7 @@ import {
 import { Button } from "react-bootstrap";
 import { apiLoginAdmin } from '../api/apiLoginAdmin';
 
-export const LoginAdminUser = () => {
+export const LoginAdmin = () => {
   const [correo, setCorreo] = useState("");
   const [password, setPassword] = useState("");
 
@@ -28,7 +28,7 @@ export const LoginAdminUser = () => {
         confirmButtonText: "Ok",
       }).then((r) => {
         if (r.isConfirmed) {
-          window.location.href = "/PaginaPrincipal";
+          window.location.href = "/ListaUsuarios";
         }
       });
     }
