@@ -1,15 +1,17 @@
-import React from 'react'
+  import React from 'react'
 
-const NavbarUser = () => {
+  const NavbarUser = () => {
     return (
-        <>
+      <>
+        <div class="contaaainer">
           <div id="sidebar">
             <div class="sidebar-header">
               <h1 class="sidebar-title">Título del Sidebar</h1>
               <div class="circle-image">
-                <img src="ruta_de_la_imagen" alt="Imagen de perfil" />
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="fotoperfil" />
               </div>
             </div>
+
             <nav class="sidebar-navigation">
               <ul>
                 <li class="active">
@@ -35,8 +37,10 @@ const NavbarUser = () => {
               </ul>
             </nav>
           </div>
-        </>
-      );
-    };
+        </div>
 
-export default NavbarUser
+      </>
+    );
+  };
+
+  export default NavbarUser

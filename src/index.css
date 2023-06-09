@@ -645,13 +645,15 @@ z-index: 3;
     color: #98D7EC;
   } */
 
+  /* ---------------------------------------------------------dfdsajkfhdfjksdahfkjsdhfjkhsdkaj */
+
   .sidebar-navigation {
     position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
     width: 80px;
-    background-color: #313443;
+    background-color: #090a12;
     z-index: 9999;
     transition: width 0.3s ease;
   }
@@ -718,17 +720,12 @@ z-index: 3;
     color: #98D7EC;
   }
   
-  /* Estilos para el sidebar-header */
   .sidebar-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 16px;
     background-color: #22252E;
-    position: fixed;
-    top: 0;
-    left: 80px;
-    right: 0;
     z-index: 9999;
   }
   
@@ -737,7 +734,7 @@ z-index: 3;
     font-size: 18px;
     font-weight: bold;
     margin: 0;
-    text-align: center; /* Añade esta propiedad para centrar el texto */
+    text-align: center; 
   }
   
   .circle-image {
@@ -753,7 +750,6 @@ z-index: 3;
     object-fit: cover;
   }
   
-  /* Estilos para pantallas más grandes */
   @media screen and (min-width: 768px) {
     .sidebar-navigation {
       width: 200px;
@@ -764,7 +760,6 @@ z-index: 3;
     }
   }
   
-  /* Estilos para pantallas más pequeñas */
   @media screen and (max-width: 767px) {
     .sidebar-navigation {
       width: 100%;
@@ -783,3 +778,4 @@ z-index: 3;
       padding: 20px 0;
     }
   }
+

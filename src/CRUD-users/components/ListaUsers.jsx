@@ -61,81 +61,58 @@ export const ListaUsers = () => {
 
   return (
     <>
-      <section id="promo" className="promo section offset-header">
-        <div className="container text-center">
-          <h2 className="title">
-            Usuarios
-          </h2>
-          <p className="intro">Listado de Usuarios</p>
-          <ul className="meta list-inline">
-            <li className="list-inline-item"></li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="container mt-4 mb-5">
-        <button  id="boton-agregar">
-          
-          <Link  to='/createUser'>Agregar Usuario </Link>
+      <div className="container mt-4 mb-5     ">
+        <button id="boton-agregar">
+          <Link to='/createUser'>Agregar Usuario</Link>
         </button>
-        <table className="table">
-          <thead className="thead-dark">
-            <tr>
-              
-              <th scope="col">Nombre</th>
-              <th scope="col">Nickname</th>
-              <th scope="col">cuentas</th>
-              <th scope="col">DPI</th>
-              <th scope="col">Direccion</th>
-              <th scope="col">Celular</th>
-              <th scope="col">Trabajo</th>
-              <th scope="col">Ingresos</th>
-
-            </tr>
-          </thead>
-          <tbody>
-
-            {listaUsers.map((user) => {
-
-              return (
-
-                <tr key={String(user._id)}>
-                  
-                  <td>{user.nombre}</td>
-                  <td>{user.nickname}</td>
-                  <td>{user.cuentas}</td>
-                  <td>{user.DPI}</td>
-                  <td>{user.direccion}</td>
-                  <td>{user.celular}</td>
-                  <td>{user.trabajo}</td>
-                  <td>{user.ingresos}</td>
-
-
-                  <td>
-                    <button className="btn btn-warning" onClick={() => handleOpenModal(user)}> Editar
-                     
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      className="btn btn-danger"
-                      onClick={() => eliminarUsers(user._id)}
-                    >
-                      Eliminar
-                    </button>
-
-                  </td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
+        <div className="table-responsive">
+          <table className="table">
+            <thead className="thead-dark">
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Nickname</th>
+                <th scope="col">Cuentas</th>
+                <th scope="col">DPI</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Celular</th>
+                <th scope="col">Trabajo</th>
+                <th scope="col">Ingresos</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {listaUsers.map((user) => {
+                return (
+                  <tr key={String(user._id)}>
+                    <td>{user.nombre}</td>
+                    <td>{user.nickname}</td>
+                    <td>{user.cuentas}</td>
+                    <td>{user.DPI}</td>
+                    <td>{user.direccion}</td>
+                    <td>{user.celular}</td>
+                    <td>{user.trabajo}</td>
+                    <td>{user.ingresos}</td>
+                    <td>
+                      <button className="btn btn-warning" onClick={() => handleOpenModal(user)}>
+                        Editar
+                      </button>
+                      <button className="btn btn-danger" onClick={() => eliminarUsers(user._id)}>
+                        Eliminar
+                      </button>
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
         <UpdateUsers
           userEdit={users}
           isOpen={showModal}
           onClose={() => handleCloseModal()}
         ></UpdateUsers>
       </div>
+
     </>
   );
 };
