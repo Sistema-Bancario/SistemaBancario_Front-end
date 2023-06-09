@@ -12,6 +12,8 @@ import {
 } from "mdb-react-ui-kit";
 import { Button } from "react-bootstrap";
 import { apiLoginAdmin } from '../api/apiLoginAdmin';
+import { Link } from 'react-router-dom';
+
 
 export const LoginAdmin = () => {
   const [correo, setCorreo] = useState("");
@@ -39,19 +41,19 @@ export const LoginAdmin = () => {
       <MDBRow>
         <MDBCol sm="6">
           <div className="d-flex flex-row ps-5 pt-5">
-            <span id="title" style={{ paddingLeft:"80px" }} className="h1 fw-bold mb-0">
-              Bank
+            <span id="title" style={{ paddingLeft: "80px" }} className="h1 fw-bold mb-0">
+            LOG IN ADMIN
             </span>
           </div>
+          <br></br>
+            <br></br>
 
           <div className="d-flex flex-column justify-content-center h-custom-2 w-75 pt-4">
-            <h3
-              className="fw-normal mt-5 mb-3 ps-5 pb-3"
-              style={{ letterSpacing: "0px", paddingLeft:"50px" }}
-              id="iniciar-sesion"
-            >
-              LOG IN ADMIN
-            </h3>
+            <Link to="/"><Button className='regresarAdmin'>Regresar</Button></Link>
+            <br></br>
+            <br></br>
+            <br></br>
+            
 
             <form onSubmit={handleLoginSubmit}>
               <MDBInput
@@ -89,18 +91,18 @@ export const LoginAdmin = () => {
                 Iniciar Sesion
               </Button>
 
-            
+
             </form>
           </div>
         </MDBCol>
 
         <MDBCol sm="6" className="d-none d-sm-block px-0">
           <img
-            src="BankLogo.png"
+            src="https://www.baccredomatic.com/sites/default/files/styles/rectangle_650x750/public/2021-04/TorreBAC7_0.jpg?itok=XJsaqK7I"
             id="imagen-login"
             alt="Login image"
             className="w-100"
-            style={{ objectFit: "cover", textAlign:"center" }}
+            style={{ objectFit: "cover", textAlign: "center" }}
           />
         </MDBCol>
       </MDBRow>
