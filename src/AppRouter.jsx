@@ -16,6 +16,8 @@ import NavbarAdmin from "./NavbarAdmin";
 import NavbarUser from "./NavbarUser";
 import UserPage from "./UserPage/UserPage";
 import { isUserAuthenticated } from "./loginUser/helpers/loginUserHelper";
+import { ListaTransactions } from "./CRUD-transactions/components/ListTransactions";
+import { CreateTransaction } from "./CRUD-transactions/components/AgregarTransaction";
 
 export const AppRouter = () => {
   return (
@@ -129,6 +131,34 @@ export const AppRouter = () => {
               </>
             ) : (
               <Navigate to="/LoginAdminUser" />
+            )
+          }
+        />
+
+        <Route
+          path="/ListaTransacciones"
+          element={
+            isAuthenticated() ? (
+              <>
+                <NavbarUser />
+                <ListaTransactions />
+              </>
+            ) : (
+              <Navigate to="/UserPage" />
+            )
+          }
+        />
+
+        <Route
+          path="/createTransaction"
+          element={
+            isAuthenticated() ? (
+              <>
+                <NavbarUser />
+                <CreateTransaction />
+              </>
+            ) : (
+              <Navigate to="/UserPage" />
             )
           }
         />
