@@ -53,7 +53,7 @@ export const ListaUsers = () => {
     } else {
       Swal.fire({
         icon: "error",
-        title: "Oops...", 
+        title: "Oops...",
         text: "No se pudo eliminar!",
       });
     }
@@ -61,10 +61,11 @@ export const ListaUsers = () => {
 
   return (
     <>
-      <div className="container mt-4 mb-5     ">
+      <div className="container mt-4 mb-5 table-container">
         <h1 className="listausuarios">LISTA DE USUARIOS</h1>
-        <div className="table-responsive">
-          <table className="table">
+        <br /><br />
+        <div className="table-responsive text-center">
+          <table className="table ml-auto custom-table-margin">
             <thead className="thead-dark">
               <tr>
                 <th scope="col">Nombre</th>
@@ -84,7 +85,7 @@ export const ListaUsers = () => {
                   <tr key={String(user._id)}>
                     <td>{user.nombre}</td>
                     <td>{user.nickname}</td>
-                    <td>{user.cuentas}</td>
+                    <td>{user.cuentas.map((cuenta, index) => `${index + 1}. ${cuenta}`).join(", ")}</td>
                     <td>{user.DPI}</td>
                     <td>{user.direccion}</td>
                     <td>{user.celular}</td>
@@ -110,7 +111,6 @@ export const ListaUsers = () => {
           onClose={() => handleCloseModal()}
         ></UpdateUsers>
       </div>
-
     </>
   );
 };

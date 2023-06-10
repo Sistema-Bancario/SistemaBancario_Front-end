@@ -11,8 +11,8 @@ export const FormUser = (UserEdit, option, _id) => {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
+            <form onSubmit={handleSubmit} >
+                <div className="form-group ">
                     <label className="text-black">nickname</label>
                     <input
                         type="text"

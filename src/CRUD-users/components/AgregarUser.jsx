@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { sendData } from "../helpers/usersHelper";
 import { user } from "../model/users";
+import { Link } from 'react-router-dom'
+import { Button } from "react-bootstrap";
+
 
 export const CreateUser = () => {
     const [agregar, setAgregar] = useState(user);
@@ -13,8 +16,10 @@ export const CreateUser = () => {
 
     return (
         <>
-            <div className="container">
-                <h1 id="create-tarea">Usuario</h1>
+            <div className="container table-container">
+                <br /><br />
+                <Link to="/ListaUsuarios"><Button className=''>Regresar</Button></Link>
+                <h1 id="create-tarea">Agregar Usuario</h1>
                 <form onSubmit={handleSubmit}>
 
                     <div className="form-group">
@@ -175,6 +180,7 @@ export const CreateUser = () => {
                             Enviar
                         </button>
                     </div>
+                    <br /><br />
                 </form>
             </div>
         </>

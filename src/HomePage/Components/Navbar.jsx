@@ -36,7 +36,7 @@ export const Navbar = () => {
             </li>
           </ul>
           <Link to="/">
-            <h1 className="logo">KinalBridge</h1>
+            <h1 className="logo">BAC CREDOMATIC</h1>
           </Link>
         </div>
       </nav>

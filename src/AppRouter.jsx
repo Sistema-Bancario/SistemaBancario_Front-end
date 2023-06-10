@@ -7,17 +7,20 @@ import { HomePage } from "./HomePage";
 import { AdminPage } from "./AdminPage/AdminPage";
 import { LoginUser } from "./loginUser/components/LoginUser";
 import { ListaUsers } from "./CRUD-users/components/ListaUsers";
-import { CreateUser } from "./CRUD-users/components/agregarUser";
+import { CreateUser } from "./CRUD-users/components/AgregarUser";
 import { ListaAdmins } from "./CRUD-UserAdmin/components/ListaAdmin";
 import { CreateAdmin } from "./CRUD-UserAdmin/components/AgregarAdmin";
 import { Footer } from "./HomePage/Components/Footer";
 import { LoginAdmin } from "./LoginAdminUser/components/LoginAdmin";
 import NavbarAdmin from "./NavbarAdmin";
 import NavbarUser from "./NavbarUser";
-import UserPage from "./UserPage/UserPage";
 import { isUserAuthenticated } from "./loginUser/helpers/loginUserHelper";
+import ListarAccount from "./Account/components/ListarAccount";
+import UserPage from "./UserPage/UserPage";
 
 export const AppRouter = () => {
+
+  console.log(isUserAuthenticated);
   return (
     <BrowserRouter>
       <Routes>
@@ -47,13 +50,40 @@ export const AppRouter = () => {
         <Route
           path="/LoginUser"
           element={
-            !isAuthenticated() && !isUserAuthenticated() ? (
+            !isUserAuthenticated() ? (
               <LoginUser />
             ) : (
-              <Navigate to="/UserPage" />
+              <Navigate to="/ListaAccount" />
             )
           }
         />
+        
+
+        {/* <Route
+          path="/ListaAccount"
+          element={
+            !isUserAuthenticated() ? (
+              <>
+                <NavbarUser />
+                <ListarAccount />
+              </>
+            ) : (
+              <Navigate to="/LoginUser" />
+            )
+          }
+        /> */}
+
+        <Route
+          path="/ListaAccount"
+          element={
+            <>
+            <NavbarUser></NavbarUser>
+            <ListarAccount></ListarAccount>
+            
+            </>
+          }
+        />
+
 
         {/* ADMIN PAGE */}
         <Route
@@ -72,7 +102,7 @@ export const AppRouter = () => {
             !isAuthenticated() && !isUserAuthenticated() ? (
               <LoginAdmin />
             ) : (
-              <Navigate to="/AdminPage" />
+              <Navigate to="/ListaUsuarios" />
             )
           }
         />
