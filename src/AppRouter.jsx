@@ -15,9 +15,6 @@ import { LoginAdmin } from "./LoginAdminUser/components/LoginAdmin";
 import NavbarAdmin from "./NavbarAdmin";
 import NavbarUser from "./NavbarUser";
 import { isUserAuthenticated } from "./loginUser/helpers/loginUserHelper";
-import ListarAccount from "./Account/components/ListarAccount";
-import UserPage from "./UserPage/UserPage";
-
 export const AppRouter = () => {
 
   console.log(isUserAuthenticated);
@@ -159,6 +156,34 @@ export const AppRouter = () => {
               </>
             ) : (
               <Navigate to="/LoginAdminUser" />
+            )
+          }
+        />
+
+        <Route
+          path="/ListaTransacciones"
+          element={
+            isAuthenticated() ? (
+              <>
+                <NavbarUser />
+                <ListaTransactions />
+              </>
+            ) : (
+              <Navigate to="/UserPage" />
+            )
+          }
+        />
+
+        <Route
+          path="/createTransaction"
+          element={
+            isAuthenticated() ? (
+              <>
+                <NavbarUser />
+                <CreateTransaction />
+              </>
+            ) : (
+              <Navigate to="/UserPage" />
             )
           }
         />
