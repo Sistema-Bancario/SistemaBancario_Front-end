@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
+
 import Swal from "sweetalert2";
 
 import {
@@ -10,16 +11,15 @@ import {
   MDBInput,
 } from "mdb-react-ui-kit";
 import { Button } from "react-bootstrap";
-import {  apiLoginUser } from "../api/apiLoginUser";
+import { apiLoginAdmin } from '../api/apiLoginAdmin';
 
-export const LoginUser = () => {
-  //Manejo del state del email y password
+export const LoginAdminUser = () => {
   const [correo, setCorreo] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
-    const result = await apiLoginUser(correo, password);
+    const result = await apiLoginAdmin(correo, password);
     if (result) {
       Swal.fire({
         icon: "success",
@@ -28,7 +28,7 @@ export const LoginUser = () => {
         confirmButtonText: "Ok",
       }).then((r) => {
         if (r.isConfirmed) {
-          window.location.href = "/";
+          window.location.href = "/PaginaPrincipal";
         }
       });
     }
@@ -50,7 +50,7 @@ export const LoginUser = () => {
               style={{ letterSpacing: "0px", paddingLeft:"50px" }}
               id="iniciar-sesion"
             >
-              LOG IN USER
+              LOG IN ADMIN
             </h3>
 
             <form onSubmit={handleLoginSubmit}>
