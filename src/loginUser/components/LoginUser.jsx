@@ -11,6 +11,8 @@ import {
 } from "mdb-react-ui-kit";
 import { Button } from "react-bootstrap";
 import {  apiLoginUser } from "../api/apiLoginUser";
+import { Link } from 'react-router-dom';
+
 
 export const LoginUser = () => {
   //Manejo del state del email y password
@@ -28,7 +30,7 @@ export const LoginUser = () => {
         confirmButtonText: "Ok",
       }).then((r) => {
         if (r.isConfirmed) {
-          window.location.href = "/";
+          window.location.href = "/misCuentas";
         }
       });
     }
@@ -40,18 +42,15 @@ export const LoginUser = () => {
         <MDBCol sm="6">
           <div className="d-flex flex-row ps-5 pt-5">
             <span id="title" style={{ paddingLeft:"80px" }} className="h1 fw-bold mb-0">
-              Bank
+              LOG IN USER
             </span>
           </div>
 
           <div className="d-flex flex-column justify-content-center h-custom-2 w-75 pt-4">
-            <h3
-              className="fw-normal mt-5 mb-3 ps-5 pb-3"
-              style={{ letterSpacing: "0px", paddingLeft:"50px" }}
-              id="iniciar-sesion"
-            >
-              LOG IN USER
-            </h3>
+          <Link to="/"><Button className='regresarAdmin'>Regresar</Button></Link>
+            <br></br>
+            <br></br>
+            <br></br>
 
             <form onSubmit={handleLoginSubmit}>
               <MDBInput
@@ -96,7 +95,7 @@ export const LoginUser = () => {
 
         <MDBCol sm="6" className="d-none d-sm-block px-0">
           <img
-            src="BankLogo.png"
+            src="https://www.yovendorecarga.com/SV/assets/images/bancos/bac.png"
             id="imagen-login"
             alt="Login image"
             className="w-100"

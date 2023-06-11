@@ -2,7 +2,7 @@ import React from 'react'
 
 
 
-export const PaginaPrincipal = () => {
+export const AdminPage = () => {
 
   return (
     <>

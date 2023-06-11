@@ -1,7 +1,7 @@
 
-export const isAdminAuthenticated = () => {
-    if (localStorage.getItem('token')) {
-        return true;
+  export const isAuthenticated = () => {
+    if (localStorage.getItem("token")) {
+      return true;
     }
     return false;
-}
+  };
