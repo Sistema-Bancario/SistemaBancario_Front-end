@@ -3,10 +3,6 @@ import Swal from "sweetalert2";
 
 export const sendData = async (state, option, _id) => {
   let resultado;
-  console.log(state.usersAdmin.nombre)
-  console.log(state.usersAdmin.correo)
-  console.log(state.usersAdmin.password)
-  
   switch (option) {
     case 1:
       resultado = await createUserAdmin({

@@ -7,11 +7,9 @@ import { Button } from "react-bootstrap";
 
 export const CreateUser = () => {
     const [agregar, setAgregar] = useState(user);
-    console.log(agregar)
     const handleSubmit = (event) => {
         event.preventDefault();
         sendData( agregar , 1, 0);
-        // Llamar a la función enviarDatos() y pasar el estado actual como argumento
     };
 
     return (

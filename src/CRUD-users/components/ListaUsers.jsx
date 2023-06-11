@@ -61,9 +61,21 @@ export const ListaUsers = () => {
 
   return (
     <>
+    <section id="promo" className="promo section offset-header ">
+        <div className="container text-center">
+          <br /><br />
+
+          <h2 className="title">
+            Usuarios
+          </h2>
+          <p className="intro">Listado de los Usuarios</p>
+          <ul className="meta list-inline">
+            <li className="list-inline-item"></li>
+          </ul>
+        </div>
+      </section>
+
       <div className="container mt-4 mb-5 table-container">
-        <h1 className="listausuarios">LISTA DE USUARIOS</h1>
-        <br /><br />
         <div className="table-responsive text-center">
           <table className="table ml-auto custom-table-margin">
             <thead className="thead-dark">

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
+import { Button } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { apiUserAdmin } from "../api/apiUsersAdmin";
 
@@ -23,7 +24,6 @@ export const ListaAdmins = () => {
   }, []);
 
   useEffect(() => {
-    console.log("usuarios actualizados:", listaAdmins);
   }, [listaAdmins]);
 
   if (error) {
@@ -32,8 +32,10 @@ export const ListaAdmins = () => {
 
   return (
     <>
-      <section id="promo" className="promo section offset-header">
+      <section id="promo" className="promo section offset-header ">
         <div className="container text-center">
+          <br /><br />
+
           <h2 className="title">
             Administradores
           </h2>
@@ -44,19 +46,11 @@ export const ListaAdmins = () => {
         </div>
       </section>
 
-      <div className="container mt-4 mb-5">
-        <button style id="boton-agregar"/>
-
-          <Link to='/createUserAdmin'>Agregar Administradores </Link>
-        <button  id="boton-agregar">
-          
-          <Link  to='/createUserAdmin'>Agregar Administradores </Link>
-        </button>
+      <div className="container mt-4 mb-5 table-container">
         <table className="table">
           <thead className="thead-dark">
             <tr>
               <th scope="col">id</th>
-            <th scope="col">id</th>
               <th scope="col">Nombre</th>
               <th scope="col">correo</th>
             </tr>
@@ -71,10 +65,6 @@ export const ListaAdmins = () => {
                   <th scope="row">{userAdmin._id}</th>
                   <td>{userAdmin.nombre}</td>
                   <td>{userAdmin.correo}</td>
-                  <td>
-                  </td>
-                  <td>
-                  </td>
                 </tr>
               )
             })}

@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import { sendData } from "../helpers/adminsHelper";
 import { usersAdmin } from "../model/usersAdmin";
+import { Link } from 'react-router-dom'
+import { Button } from "react-bootstrap";
 
 export const CreateAdmin = () => {
     const [agregar, setAgregar] = useState(usersAdmin);
     console.log(agregar)
     const handleSubmit = (event) => {
         event.preventDefault();
-        sendData( agregar , 1, 0);
+        sendData(agregar, 1, 0);
         // Llamar a la función enviarDatos() y pasar el estado actual como argumento
     };
 
     return (
         <>
-            <div className="container">
-                <h1 id="create-tarea">Administrador</h1>
+            <div className="container table-container">
+                <br /><br />
+                <Link to="/ListaUsuarios"><Button className=''>Regresar</Button></Link>
+                <h1 id="create-tarea">Agregar Administrador</h1>
                 <form onSubmit={handleSubmit}>
 
                     <div className="form-group">
@@ -69,9 +73,9 @@ export const CreateAdmin = () => {
                     </div>
 
                     <div className="container text-center">
-                        <button id="btn-enviar" type="submit" className="btn">
-                            Enviar
-                        </button>
+                            <button id="btn-enviar" type="submit" className="btn" >
+                                Enviar
+                            </button>
                     </div>
                 </form>
             </div>
