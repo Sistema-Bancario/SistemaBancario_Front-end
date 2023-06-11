@@ -1,13 +1,16 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const URL = "localhost:8080/api/transactions/";
+
+const token = localStorage.getItem("token");
+const URL = "http://localhost:8080/api/transactions/";
+
 
 export const apiTransaction = async () => {
     try {
         const listaTransactions = await axios.get(`${URL}vertransacciones/:numeroCuenta`);
         return listaTransactions.data.listaTransactions;
-    } catch ({response: {data}}) {
+    } catch ({ response: { data } }) {
         return data.msg;
     }
 }
@@ -16,7 +19,6 @@ export const createTransaction = async ({
     cuentaOrigen,
     cuentaDestino,
     monto,
-    fecha,
     tipoCuenta
 }) => {
     try {
@@ -26,17 +28,18 @@ export const createTransaction = async ({
                 cuentaOrigen: cuentaOrigen,
                 cuentaDestino: cuentaDestino,
                 monto: monto,
-                fecha: fecha,
                 tipoCuenta: tipoCuenta
-            }
+            },
+            { headers: { "x-token": token } }
         );
-
+       
+    
         return true;
-    } catch ({response: {data}}) {
+    } catch (error) {
         Swal.fire({
             icon: "error",
             title: "Ocurrió un error",
-            text: "transferencia fallida",
+            text: "Transferencia fallida",
         });
     }
-}
+};

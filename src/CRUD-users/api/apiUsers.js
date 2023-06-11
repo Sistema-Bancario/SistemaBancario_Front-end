@@ -73,10 +73,6 @@ export const createUser = async ({
   trabajo,
   ingresos,
 }) => {
-  console.log("TOKEN", token);
- // dpi = Number(dpi);
-  //celular= Number(celular);
- // ingresos = Number(ingresos);
  
   try {
     const response = await axios.post(

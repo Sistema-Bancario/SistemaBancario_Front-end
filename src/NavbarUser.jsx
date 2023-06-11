@@ -42,13 +42,13 @@ const NavbarUser = () => {
           <nav className="sidebar-navigation">
             <ul>
               <li className="">
-                <Link className='botoagregarUsuarios' to="/createUser">
+                <Link className='botoagregarUsuarios' to="/ListaAccount">
                   <i className="fa fa-user"></i>
                   <span className="tooltip">Ver cuentas</span>
                 </Link>
               </li>
               <li>
-                <Link className='botoagregarUsuarios' to="/createUser">
+                <Link className='botoagregarUsuarios' to="/createTransaction">
                   <i className="fa fa-exchange"></i>
                   <span className="tooltip">Transferencias</span>
                 </Link>

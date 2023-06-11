@@ -1,18 +1,21 @@
 import React, { useState } from 'react'
 import { transaction } from '../model/transactions'
 import { sendData } from '../helpers/transactionsHelper';
+import { Link } from 'react-router-dom'
+import { Button } from "react-bootstrap";
 
 export const CreateTransaction = () => {
     const [agregar, setAgregar] = useState(transaction);
-    console.log(agregar);
     const handleSubmit = (event) => {
         event.preventDefault();
         sendData(agregar, 1, 0);
     }
 
     return (
-        <div className='container'>
-            <h1 id='create-tarea'>Transaccion</h1>
+        <div className='container table-container'>
+            <br /><br />
+            <Link to="/ListaAccount"><Button className=''>Regresar</Button></Link>
+            <h1 id='create-tarea'>Transferencia</h1>
             <form onSubmit={handleSubmit}>
                 <div className='form-group'>
                     <label className="text-black">Cuenta Origen</label>
@@ -59,23 +62,6 @@ export const CreateTransaction = () => {
                                 transaction: {
                                     ...agregar.transaction,
                                     monto: event.target.value,
-                                },
-                            })
-                        }
-                    />
-                </div>
-
-                <div className='form-group'>
-                <label className="text-black">Fecha</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        name="fecha"
-                        onChange={(event) =>
-                            setAgregar({
-                                transaction: {
-                                    ...agregar.transaction,
-                                    fecha: event.target.value,
                                 },
                             })
                         }

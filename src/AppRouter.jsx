@@ -8,16 +8,20 @@ import { AdminPage } from "./AdminPage/AdminPage";
 import { LoginUser } from "./loginUser/components/LoginUser";
 import { ListaUsers } from "./CRUD-users/components/ListaUsers";
 import { CreateUser } from "./CRUD-users/components/AgregarUser";
-import { ListaAdmins } from "./CRUD-UserAdmin/components/ListaAdmin";
 import { CreateAdmin } from "./CRUD-UserAdmin/components/AgregarAdmin";
 import { Footer } from "./HomePage/Components/Footer";
 import { LoginAdmin } from "./LoginAdminUser/components/LoginAdmin";
 import NavbarAdmin from "./NavbarAdmin";
 import NavbarUser from "./NavbarUser";
 import { isUserAuthenticated } from "./loginUser/helpers/loginUserHelper";
+import UserPage from "./UserPage/UserPage";
+import ListarAccount from "./Account/components/ListarAccount";
+import { ListaTransactions } from "./CRUD-transactions/components/ListTransactions";
+import { CreateTransaction } from "./CRUD-transactions/components/AgregarTransaction";
+import { ListaAdmins } from "./CRUD-UserAdmin/components/ListaAdmin";
+
 export const AppRouter = () => {
 
-  console.log(isUserAuthenticated);
   return (
     <BrowserRouter>
       <Routes>
@@ -54,7 +58,7 @@ export const AppRouter = () => {
             )
           }
         />
-        
+
 
         {/* <Route
           path="/ListaAccount"
@@ -74,10 +78,38 @@ export const AppRouter = () => {
           path="/ListaAccount"
           element={
             <>
-            <NavbarUser></NavbarUser>
-            <ListarAccount></ListarAccount>
-            
+              <NavbarUser></NavbarUser>
+              <ListarAccount></ListarAccount>
+
             </>
+          }
+        />
+        {/* TRANSACCIONES  */}
+        <Route
+          path="/ListaTransacciones"
+          element={
+            isAuthenticated() ? (
+              <>
+                <NavbarUser />
+                <ListaTransactions />
+              </>
+            ) : (
+              <Navigate to="/UserPage" />
+            )
+          }
+        />
+
+        <Route
+          path="/createTransaction"
+          element={
+            isAuthenticated() ? (
+              <>
+                <NavbarUser />
+                <CreateTransaction />
+              </>
+            ) : (
+              <Navigate to="/UserPage" />
+            )
           }
         />
 
@@ -138,7 +170,8 @@ export const AppRouter = () => {
             isAuthenticated() ? (
               <>
                 <NavbarAdmin />
-                <ListaAdmins />
+                <ListaAdmins></ListaAdmins>
+
               </>
             ) : (
               <Navigate to="/LoginAdminUser" />
@@ -160,33 +193,7 @@ export const AppRouter = () => {
           }
         />
 
-        <Route
-          path="/ListaTransacciones"
-          element={
-            isAuthenticated() ? (
-              <>
-                <NavbarUser />
-                <ListaTransactions />
-              </>
-            ) : (
-              <Navigate to="/UserPage" />
-            )
-          }
-        />
 
-        <Route
-          path="/createTransaction"
-          element={
-            isAuthenticated() ? (
-              <>
-                <NavbarUser />
-                <CreateTransaction />
-              </>
-            ) : (
-              <Navigate to="/UserPage" />
-            )
-          }
-        />
       </Routes>
     </BrowserRouter>
   );
