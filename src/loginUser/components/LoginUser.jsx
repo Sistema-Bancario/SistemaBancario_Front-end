@@ -30,7 +30,7 @@ export const LoginUser = () => {
         confirmButtonText: "Ok",
       }).then((r) => {
         if (r.isConfirmed) {
-          window.location.href = "/ListaAccount";
+          window.location.href = "/misCuentas";
         }
       });
     }

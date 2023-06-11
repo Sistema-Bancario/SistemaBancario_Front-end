@@ -42,7 +42,7 @@ const NavbarUser = () => {
           <nav className="sidebar-navigation">
             <ul>
               <li className="">
-                <Link className='botoagregarUsuarios' to="/ListaAccount">
+                <Link className='botoagregarUsuarios' to="/misCuentas">
                   <i className="fa fa-user"></i>
                   <span className="tooltip">Ver cuentas</span>
                 </Link>
@@ -59,12 +59,12 @@ const NavbarUser = () => {
                   <span className="tooltip">Historial</span>
                 </Link>
               </li>
-              <li>
-                <Link className='botoagregarUsuarios' to="/createUser">
+              {/* <li>
+                <Link className='botoagregarUsuarios' to="/favoritos/:id">
                   <i className="fa fa-star"></i>
                   <span className="tooltip">Favoritos</span>
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </nav>
 

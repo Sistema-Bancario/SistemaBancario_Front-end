@@ -14,7 +14,7 @@ export const CreateTransaction = () => {
     return (
         <div className='container table-container'>
             <br /><br />
-            <Link to="/ListaAccount"><Button className=''>Regresar</Button></Link>
+            <Link to="/misCuentas"><Button className='regresartransaccion'>Regresar</Button></Link>
             <h1 id='create-tarea'>Transferencia</h1>
             <form onSubmit={handleSubmit}>
                 <div className='form-group'>

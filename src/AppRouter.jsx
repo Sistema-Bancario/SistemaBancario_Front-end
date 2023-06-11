@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { isAuthenticated } from "./LoginAdminUser/helpers/loginAdminHelper";
-
 import { Navbar } from "./HomePage/Components/Navbar";
 import { HomePage } from "./HomePage";
 import { AdminPage } from "./AdminPage/AdminPage";
@@ -15,16 +14,20 @@ import NavbarAdmin from "./NavbarAdmin";
 import NavbarUser from "./NavbarUser";
 import { isUserAuthenticated } from "./loginUser/helpers/loginUserHelper";
 import UserPage from "./UserPage/UserPage";
-import ListarAccount from "./Account/components/ListarAccount";
+import ListarAccount from "./Cuenta/components/ListarAccount";
 import { ListaTransactions } from "./CRUD-transactions/components/ListTransactions";
 import { CreateTransaction } from "./CRUD-transactions/components/AgregarTransaction";
 import { ListaAdmins } from "./CRUD-UserAdmin/components/ListaAdmin";
+import { Profile } from "./perfil/components/Profile";
+import { Favoritos } from "./favorito/MisFavoritos";
 
 export const AppRouter = () => {
 
   return (
     <BrowserRouter>
       <Routes>
+
+        <Route path="/miPerfil" element={<Profile />} />
         {/* HOME PAGE --- PRINCIPAL */}
         <Route
           path="/"
@@ -54,28 +57,14 @@ export const AppRouter = () => {
             !isUserAuthenticated() ? (
               <LoginUser />
             ) : (
-              <Navigate to="/ListaAccount" />
+              <Navigate to="/misCuentas" />
             )
           }
         />
 
 
-        {/* <Route
-          path="/ListaAccount"
-          element={
-            !isUserAuthenticated() ? (
-              <>
-                <NavbarUser />
-                <ListarAccount />
-              </>
-            ) : (
-              <Navigate to="/LoginUser" />
-            )
-          }
-        /> */}
-
         <Route
-          path="/ListaAccount"
+          path="/misCuentas"
           element={
             <>
               <NavbarUser></NavbarUser>
@@ -84,6 +73,19 @@ export const AppRouter = () => {
             </>
           }
         />
+
+        <Route path="/favoritos/:id"
+          element={
+            <>
+            <NavbarUser></NavbarUser>
+            <Favoritos />
+            
+            </>
+
+          }
+        />
+
+
         {/* TRANSACCIONES  */}
         <Route
           path="/ListaTransacciones"
