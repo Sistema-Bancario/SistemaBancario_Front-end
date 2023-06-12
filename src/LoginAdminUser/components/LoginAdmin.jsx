@@ -1,7 +1,4 @@
 import React, { useState } from 'react'
-
-import Swal from "sweetalert2";
-
 import {
   MDBBtn,
   MDBContainer,
@@ -13,6 +10,7 @@ import {
 import { Button } from "react-bootstrap";
 import { apiLoginAdmin } from '../api/apiLoginAdmin';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 
 export const LoginAdmin = () => {

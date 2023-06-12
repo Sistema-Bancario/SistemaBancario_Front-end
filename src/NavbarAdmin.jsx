@@ -54,9 +54,12 @@ const NavbarAdmin = () => {
                 </Link>
               </li>
               <li>
-                <i className="fa fa-plus-circle"></i>
-                <span className="tooltip">Crear Cuenta</span>
+                <Link className='botoagregarUsuarios' to="/createAccount  ">
+                  <i className="fa fa-plus-circle"></i>
+                  <span className="tooltip">Crear Cuenta</span>
+                </Link>
               </li>
+
               <li>
                 <Link className='botoagregarUsuarios' to="/createUserAdmin">
                   <i className="fa fa-user-plus"></i>

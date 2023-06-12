@@ -6,7 +6,6 @@ import { Button } from "react-bootstrap";
 
 export const CreateAdmin = () => {
     const [agregar, setAgregar] = useState(usersAdmin);
-    console.log(agregar)
     const handleSubmit = (event) => {
         event.preventDefault();
         sendData(agregar, 1, 0);

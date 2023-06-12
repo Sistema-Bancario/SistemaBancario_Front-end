@@ -25,7 +25,6 @@ export const ListaUsers = () => {
   }, []);
 
   useEffect(() => {
-    console.log("usuarios actualizados:", listaUsers);
   }, [listaUsers]);
 
   const handleOpenModal = (user) => {

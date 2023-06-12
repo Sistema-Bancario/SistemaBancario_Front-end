@@ -18,6 +18,7 @@ import { CreateTransaction } from "./CRUD-transactions/components/AgregarTransac
 import { ListaAdmins } from "./CRUD-UserAdmin/components/ListaAdmin";
 import { Profile } from "./perfil/components/Profile";
 import { Favoritos } from "./favorito/MisFavoritos";
+import { CreateAccount } from "./Cuenta/components/AgregarCuenta";
 
 
 export const AppRouter = () => {
@@ -132,6 +133,7 @@ export const AppRouter = () => {
             )
           }
         />
+        
 
         <Route
           path="/ListaUsuarios"
@@ -144,6 +146,16 @@ export const AppRouter = () => {
             ) : (
               <Navigate to="/LoginAdminUser" />
             )
+          }
+        />
+
+        <Route path="/createAccount"
+          element={
+            <>
+            <NavbarAdmin></NavbarAdmin>
+            <CreateAccount></CreateAccount>
+            </>
+            
           }
         />
 
