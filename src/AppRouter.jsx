@@ -1,14 +1,12 @@
 import React from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { isAuthenticated } from "./LoginAdminUser/helpers/loginAdminHelper";
-import { Navbar } from "./HomePage/Components/Navbar";
 import { HomePage } from "./HomePage";
 import { AdminPage } from "./AdminPage/AdminPage";
 import { LoginUser } from "./loginUser/components/LoginUser";
 import { ListaUsers } from "./CRUD-users/components/ListaUsers";
 import { CreateUser } from "./CRUD-users/components/AgregarUser";
 import { CreateAdmin } from "./CRUD-UserAdmin/components/AgregarAdmin";
-import { Footer } from "./HomePage/Components/Footer";
 import { LoginAdmin } from "./LoginAdminUser/components/LoginAdmin";
 import NavbarAdmin from "./NavbarAdmin";
 import NavbarUser from "./NavbarUser";
@@ -20,7 +18,7 @@ import { CreateTransaction } from "./CRUD-transactions/components/AgregarTransac
 import { ListaAdmins } from "./CRUD-UserAdmin/components/ListaAdmin";
 import { Profile } from "./perfil/components/Profile";
 import { Favoritos } from "./favorito/MisFavoritos";
-import { HomePageClient } from "./HomePage/Components/HomePageClient";
+
 
 export const AppRouter = () => {
 
