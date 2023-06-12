@@ -20,6 +20,7 @@ import { CreateTransaction } from "./CRUD-transactions/components/AgregarTransac
 import { ListaAdmins } from "./CRUD-UserAdmin/components/ListaAdmin";
 import { Profile } from "./perfil/components/Profile";
 import { Favoritos } from "./favorito/MisFavoritos";
+import { HomePageClient } from "./HomePage/Components/HomePageClient";
 
 export const AppRouter = () => {
 
@@ -32,11 +33,7 @@ export const AppRouter = () => {
         <Route
           path="/"
           element={
-            <>
-              <Navbar />
-              <HomePage />
-              <Footer />
-            </>
+          <HomePage/>
           }
         />
 
