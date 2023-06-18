@@ -46,7 +46,7 @@ const ListarAccount = () => {
             <button class="custom-btn btn-12" onClick={(event) => {
                   event.preventDefault();
                   navigate(`/favoritos/${c.numeroCuenta}`);
-                }}><span>Click!</span><span>Favoritos</span></button>
+                }}>  <span>Click!</span><span>Favoritos</span></button>
           </div>
 
         ))}

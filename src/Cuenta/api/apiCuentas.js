@@ -5,12 +5,15 @@ const URL = "http://localhost:8080/api/accounts/";
 
 export const apiMisCuentas = async () => {
   try {
-    const cuentas = await axios.get(`${URL}misCuentas`, { headers: { "x-token": token } });
+    const cuentas = await axios.get(`${URL}misCuentas`, 
+    { headers: { "x-token": token } 
+  });
     return cuentas.data.cuentas;
   } catch (error) {
     console.log(error);
   }
 };
+
 export const CuentaId= async (id) => {
   try {
     const cuentas = await axios.get(`${URL}cuentaSaldoId/${id}`, { headers: { "x-token": token } });
@@ -48,5 +51,19 @@ export const createAccount = async ({
   }
 
 };
+
+
+export const CuentasconMasMovimiento = async (userId, orden) => {
+  try {
+    const response = await axios.get(`${URL}mostrarCuentasConMasTransferencias/${userId}?orden=${orden}`, {
+      headers: { "x-token": token }
+    });
+    return response.data.cuentas;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
 
   

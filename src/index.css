@@ -785,7 +785,7 @@ z-index: 3;
 @media (max-width: 768px) {
   .table-container {
     margin-right: 10px;
-  }
+  }  
 }
 
 /* form de agregar USUARIOS  */
@@ -988,6 +988,7 @@ background: linear-gradient(0deg, rgb(238, 48, 0) 0%, rgb(87, 155, 224) 100%);
   transition: all 1.2s ease-in-out;
 }
 
+/* LISTADO DE CUENTAS MAS TRANSFERENCIAS  */
 
 
 

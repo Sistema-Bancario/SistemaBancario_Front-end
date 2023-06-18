@@ -21,7 +21,7 @@ export const sendData = async (state, option, _id) => {
                     confirmButtonText: "Ok",
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location.href = "/ListaAccount";
+                        window.location.href = "/misCuentas";
                     } else {
                         window.location.href = "/";
                     }

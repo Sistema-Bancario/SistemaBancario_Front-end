@@ -19,6 +19,7 @@ import { ListaAdmins } from "./CRUD-UserAdmin/components/ListaAdmin";
 import { Profile } from "./perfil/components/Profile";
 import { Favoritos } from "./favorito/MisFavoritos";
 import { CreateAccount } from "./Cuenta/components/AgregarCuenta";
+import ListaAccountMasMovimiento from "./Cuenta/components/ListaAccountMasMovimiento";
 
 
 export const AppRouter = () => {
@@ -32,7 +33,7 @@ export const AppRouter = () => {
         <Route
           path="/"
           element={
-          <HomePage/>
+            <HomePage />
           }
         />
 
@@ -73,9 +74,9 @@ export const AppRouter = () => {
         <Route path="/favoritos/:id"
           element={
             <>
-            <NavbarUser></NavbarUser>
-            <Favoritos />
-            
+              <NavbarUser></NavbarUser>
+              <Favoritos />
+
             </>
 
           }
@@ -133,7 +134,18 @@ export const AppRouter = () => {
             )
           }
         />
-        
+
+        <Route
+          path="/CuentasMasMovimiento/:userId"
+          element={
+            <>
+              <NavbarAdmin></NavbarAdmin>
+              <ListaAccountMasMovimiento />
+            </>
+          }
+        />
+
+
 
         <Route
           path="/ListaUsuarios"
@@ -152,10 +164,10 @@ export const AppRouter = () => {
         <Route path="/createAccount"
           element={
             <>
-            <NavbarAdmin></NavbarAdmin>
-            <CreateAccount></CreateAccount>
+              <NavbarAdmin></NavbarAdmin>
+              <CreateAccount></CreateAccount>
             </>
-            
+
           }
         />
 

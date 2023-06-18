@@ -26,6 +26,7 @@ export const CreateAccount = () => {
               type="text"
               className="form-control"
               name="propietario"
+              required
               onChange={(event) =>
                 setAgregar({
                   account: {
@@ -42,6 +43,7 @@ export const CreateAccount = () => {
             <select
               className="form-control"
               name="tipoCuenta"
+              required
               onChange={(event) =>
                 setAgregar({
                   account: {
@@ -51,10 +53,10 @@ export const CreateAccount = () => {
                 })
               }
             >
-              <option value=""></option>
+              <option value="">Selecciona una opción</option>
               <option value="ahorro">Ahorro</option>
               <option value="monetaria">Monetaria</option>
-            </select> 
+            </select>
           </div>
 
           <div className="form-group">
@@ -63,6 +65,9 @@ export const CreateAccount = () => {
               type="text"
               className="form-control"
               name="saldo"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              title="Debe tener dígitos numéricos"
               onChange={(event) =>
                 setAgregar({
                   account: {
