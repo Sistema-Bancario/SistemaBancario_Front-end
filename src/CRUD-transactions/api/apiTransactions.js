@@ -4,6 +4,8 @@ import Swal from "sweetalert2";
 
 const token = localStorage.getItem("token");
 const URL = "http://localhost:8080/api/transactions/";
+const URL_CUENTAS = "http://localhost:8080/api/accounts/";
+
 
 
 export const apiTransaction = async () => {
@@ -43,3 +45,13 @@ export const createTransaction = async ({
         });
     }
 };
+
+export const apiAccount = async (cuenta) => {
+    try {
+        const historial = await axios.get(`${URL_CUENTAS}historial/${cuenta}`);
+        console.log(historial.data);
+        return historial.data.cuentasActivas;
+    } catch ({ response: { data } }) {
+        return data.msg;
+    }
+}
