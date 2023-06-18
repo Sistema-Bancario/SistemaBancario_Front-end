@@ -11,6 +11,14 @@ export const apiMisCuentas = async () => {
     console.log(error);
   }
 };
+export const CuentaId= async (id) => {
+  try {
+    const cuentas = await axios.get(`${URL}cuentaSaldoId/${id}`, { headers: { "x-token": token } });
+    return cuentas.data.saldo;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const createAccount = async ({
   propietario,
