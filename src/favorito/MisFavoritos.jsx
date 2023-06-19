@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { agregarFavorito, apiEliminarContacto, apiEliminarLista, apiFavoritos } from "./api/apiFavoritos";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Card, Col, Row, Button, Modal, Form } from "react-bootstrap";
 import Swal from "sweetalert2";
 
@@ -42,7 +42,7 @@ export const Favoritos = () => {
         title: "Se agregó un nuevo favorito",
         text: "Has agregado un nuevo favorito",
         confirmButtonText: "Ok",
-    }).then(() => {
+      }).then(() => {
         window.location.reload(); // Recargar la página
       });
     } else {
@@ -55,66 +55,70 @@ export const Favoritos = () => {
     handleModalClose();
   };
 
-  const handleEliminarLista = async() => {
+  const handleEliminarLista = async () => {
     const confirmacion = await Swal.fire({
-        icon: "success",
-        title: "Estás seguro de eliminar toda la lista?",
-        confirmButtonText: "Ok",
-      });
-    
-      if (confirmacion.isConfirmed) {
-        const resultado = await apiEliminarLista(favoritos._id);
-        if (resultado) {
-          Swal.fire({
-            icon: "success",
-            title: "Se eliminó un favorito",
-            text: "Has eliminado un favorito",
-            confirmButtonText: "Ok",
-          }).then(() => {
-            window.location.reload(); // Recargar la página
-          });
-        } else {
-          Swal.fire({
-            icon: "error",
-            title: "Error",
-            confirmButtonText: "Ok",
-          });
-        }
+      icon: "success",
+      title: "Estás seguro de eliminar toda la lista?",
+      confirmButtonText: "Ok",
+    });
+
+    if (confirmacion.isConfirmed) {
+      const resultado = await apiEliminarLista(favoritos._id);
+      if (resultado) {
+        Swal.fire({
+          icon: "success",
+          title: "Se eliminó un favorito",
+          text: "Has eliminado un favorito",
+          confirmButtonText: "Ok",
+        }).then(() => {
+          window.location.reload(); // Recargar la página
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          confirmButtonText: "Ok",
+        });
+      }
       setFavoritos([]);
       setContactos([]);
     }
   };
 
-  const handleEliminarFavorito = async(c) => {
+  const handleEliminarFavorito = async (c) => {
     const confirmacion = await Swal.fire({
-        icon: "success",
-        title: "Estás seguro de eliminar este registro?",
-        confirmButtonText: "Ok",
-      });
-    
-      if (confirmacion.isConfirmed) {
-        const resultado = await apiEliminarContacto(favoritos._id, c.cuentas);
-        if (resultado) {
-          Swal.fire({
-            icon: "success",
-            title: "Se eliminó un favorito",
-            text: "Has eliminado un favorito",
-            confirmButtonText: "Ok",
-          }).then(() => {
-            window.location.reload(); // Recargar la página
-          });
-        } else {
-          Swal.fire({
-            icon: "error",
-            title: "Error",
-            confirmButtonText: "Ok",
-          });
-        }
+      icon: "success",
+      title: "Estás seguro de eliminar este registro?",
+      confirmButtonText: "Ok",
+    });
+
+    if (confirmacion.isConfirmed) {
+      const resultado = await apiEliminarContacto(favoritos._id, c.cuentas);
+      if (resultado) {
+        Swal.fire({
+          icon: "success",
+          title: "Se eliminó un favorito",
+          text: "Has eliminado un favorito",
+          confirmButtonText: "Ok",
+        }).then(() => {
+          window.location.reload(); // Recargar la página
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          confirmButtonText: "Ok",
+        });
       }
     }
+  };
 
   return (
     <div className="container mt-4 table-container">
+      <Link to={`/buscarporNum/${id}`} className="btn btn-primary">
+        Regresar
+      </Link>
+      <br /><br /><br />
       <h1>Lista de Favoritos</h1>
       <div className="d-flex justify-content-between align-items-center mb-3">
         <Button className="btn btn-primary" onClick={handleModalShow}>

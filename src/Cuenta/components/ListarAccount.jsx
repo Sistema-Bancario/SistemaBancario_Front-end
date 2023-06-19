@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Row, Col } from "react-bootstrap";
-import { apiMisCuentas } from "../api/apiCuentas";
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Row, Col } from 'react-bootstrap';
+import { apiMisCuentas } from '../api/apiCuentas';
 
 const ListarAccount = () => {
   const navigate = useNavigate();
@@ -16,7 +16,12 @@ const ListarAccount = () => {
     viewMisCuentas();
   }, []);
 
-  const cardColors = ["economy", "premiumeconomy", "business", "first"];
+  const cardColors = ['economy', 'premiumeconomy', 'business', 'first'];
+
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+  
 
   return (
     <>
@@ -27,10 +32,12 @@ const ListarAccount = () => {
           </div>
         </Col>
       </Row>
-      <br /><br />
+      <br />
+      <br />
 
       <div className="tariffCards">
-        <br /> <br />
+        <br />
+        <br />
 
         {misCuentas.map((c, index) => (
           <div
@@ -38,17 +45,16 @@ const ListarAccount = () => {
             key={c._id}
             md={6}
             lg={4}
+            onClick={(event) => {
+              event.preventDefault();
+             navigate(`/buscarporNum/${c.numeroCuenta}`);
+            }}
+            style={{ cursor: 'pointer' }}
           >
-            <img src="https://financialallianceforwomen.org/wp-content/uploads/2020/03/BAC-Credomatic-Square.png" alt=""/>
+            <img src="https://financialallianceforwomen.org/wp-content/uploads/2020/03/BAC-Credomatic-Square.png" alt="" />
             <h3> No. {c.numeroCuenta}</h3>
-            <h2> Tipo de cuenta: {c.tipoCuenta}</h2>
-            <span>Saldo: {c.saldo}</span>
-            <button class="custom-btn btn-12" onClick={(event) => {
-                  event.preventDefault();
-                  navigate(`/favoritos/${c.numeroCuenta}`);
-                }}>  <span>Click!</span><span>Favoritos</span></button>
+            <h2> Tipo de cuenta: {capitalizeFirstLetter(c.tipoCuenta)}</h2>
           </div>
-
         ))}
         <br />
       </div>

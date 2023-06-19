@@ -21,7 +21,8 @@ export const createTransaction = async ({
     cuentaOrigen,
     cuentaDestino,
     monto,
-    tipoCuenta
+    tipoCuenta,
+    descripcion
 }) => {
     try {
         const response = await axios.post(
@@ -30,7 +31,8 @@ export const createTransaction = async ({
                 cuentaOrigen: cuentaOrigen,
                 cuentaDestino: cuentaDestino,
                 monto: monto,
-                tipoCuenta: tipoCuenta
+                tipoCuenta: tipoCuenta,
+                descripcion:descripcion,
             },
             { headers: { "x-token": token } }
         );
@@ -48,10 +50,13 @@ export const createTransaction = async ({
 
 export const apiAccount = async (cuenta) => {
     try {
-        const historial = await axios.get(`${URL_CUENTAS}historial/${cuenta}`);
-        console.log(historial.data);
-        return historial.data.cuentasActivas;
+      const historial = await axios.get(`${URL_CUENTAS}historial/${cuenta}`, {
+        headers: { "x-token": token },
+      });
+      return historial.data.cuentasActivas;
     } catch ({ response: { data } }) {
-        return data.msg;
+      return data.msg;
     }
-}
+  };
+  
+  

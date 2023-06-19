@@ -54,17 +54,12 @@ const NavbarUser = () => {
                 </Link>
               </li>
               <li>
-                <Link className='botoagregarUsuarios' to="/createUser">
+                <Link className='botoagregarUsuarios' to="/ListaTransacciones">
                   <i className="fa fa-history"></i>
                   <span className="tooltip">Historial</span>
                 </Link>
               </li>
-              {/* <li>
-                <Link className='botoagregarUsuarios' to="/favoritos/:id">
-                  <i className="fa fa-star"></i>
-                  <span className="tooltip">Favoritos</span>
-                </Link>
-              </li> */}
+              
             </ul>
           </nav>
 

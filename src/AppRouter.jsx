@@ -20,6 +20,8 @@ import { Profile } from "./perfil/components/Profile";
 import { Favoritos } from "./favorito/MisFavoritos";
 import { CreateAccount } from "./Cuenta/components/AgregarCuenta";
 import ListaAccountMasMovimiento from "./Cuenta/components/ListaAccountMasMovimiento";
+import { HistorialTransaccion } from "./CRUD-transactions/components/HistorialTransaccion";
+import VerCuentaDetalle from "./Cuenta/components/VerCuentaDetalle";
 
 
 export const AppRouter = () => {
@@ -71,6 +73,20 @@ export const AppRouter = () => {
           }
         />
 
+        <Route
+          path="/buscarporNum/:id"
+          element={
+            isAuthenticated() ? (
+              <>
+                <NavbarUser />
+                <VerCuentaDetalle />
+              </>
+            ) : (
+              <Navigate to="/UserPage" />
+            )
+          }
+        />
+
         <Route path="/favoritos/:id"
           element={
             <>
@@ -112,6 +128,18 @@ export const AppRouter = () => {
           }
         />
 
+        <Route path="/historial/:id" 
+         element={
+          isAuthenticated() ? (
+            <>
+              <NavbarUser />
+              <HistorialTransaccion />
+            </>
+          ) : (
+            <Navigate to="/UserPage" />
+          )
+        }
+      />
 
         {/* ADMIN PAGE */}
         <Route

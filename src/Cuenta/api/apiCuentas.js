@@ -14,6 +14,19 @@ export const apiMisCuentas = async () => {
   }
 };
 
+export const buscarCuentaPorNumero = async (id) => {
+  try {
+    const response = await axios.get(`${URL}buscarporNum/${id}`, {
+      headers: { "x-token": token },
+    });
+    return [response.data.cuenta]; // Envolver el objeto cuenta en un arreglo
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+
 export const CuentaId= async (id) => {
   try {
     const cuentas = await axios.get(`${URL}cuentaSaldoId/${id}`, { headers: { "x-token": token } });

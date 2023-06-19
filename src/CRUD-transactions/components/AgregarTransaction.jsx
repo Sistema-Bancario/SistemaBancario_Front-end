@@ -122,6 +122,24 @@ export const CreateTransaction = () => {
                     </select>
                 </div>
 
+                <div className='form-group'>
+                    <label className="text-black">Descripción</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        name="descripcion"
+                        required
+                        onChange={(event) =>
+                            setAgregar({
+                                transaction: {
+                                    ...agregar.transaction,
+                                    descripcion: event.target.value,
+                                },
+                            })
+                        }
+                    />
+                </div>
+
                 <div className="container text-center">
                     <button id="btn-enviar" type="submit" className="btn">
                         Enviar

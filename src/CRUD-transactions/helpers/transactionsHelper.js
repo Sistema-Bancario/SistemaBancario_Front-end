@@ -9,8 +9,9 @@ export const sendData = async (state, option, _id) => {
             resultado = await createTransaction({
                 cuentaOrigen: state.transaction.cuentaOrigen,
                 cuentaDestino: state.transaction.cuentaDestino,
-                monto: Number(state.transaction.monto), // Convert monto to a number
+                monto: Number(state.transaction.monto), 
                 tipoCuenta: state.transaction.tipoCuenta,
+                descripcion: state.transaction.descripcion
             });
             if (resultado) {
                 Swal.fire({
