@@ -6,3 +6,4 @@ export const transaction = {
     tipoCuenta: "",
     descripcion: ""
 }
+

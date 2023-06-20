@@ -22,6 +22,7 @@ import { CreateAccount } from "./Cuenta/components/AgregarCuenta";
 import ListaAccountMasMovimiento from "./Cuenta/components/ListaAccountMasMovimiento";
 import { HistorialTransaccion } from "./CRUD-transactions/components/HistorialTransaccion";
 import VerCuentaDetalle from "./Cuenta/components/VerCuentaDetalle";
+import TransactionFav from "./CRUD-transactions/components/TransactionFav";
 
 
 export const AppRouter = () => {
@@ -87,6 +88,20 @@ export const AppRouter = () => {
           }
         />
 
+        <Route
+          path="/transferirFav/:cuentaDestino"
+          element={
+            isAuthenticated() ? (
+              <>
+                <NavbarUser />
+                <TransactionFav />
+              </>
+            ) : (
+              <Navigate to="/UserPage" />
+            )
+          }
+        />
+
         <Route path="/favoritos/:id"
           element={
             <>
@@ -128,18 +143,18 @@ export const AppRouter = () => {
           }
         />
 
-        <Route path="/historial/:id" 
-         element={
-          isAuthenticated() ? (
-            <>
-              <NavbarUser />
-              <HistorialTransaccion />
-            </>
-          ) : (
-            <Navigate to="/UserPage" />
-          )
-        }
-      />
+        <Route path="/historial/:id"
+          element={
+            isAuthenticated() ? (
+              <>
+                <NavbarUser />
+                <HistorialTransaccion />
+              </>
+            ) : (
+              <Navigate to="/UserPage" />
+            )
+          }
+        />
 
         {/* ADMIN PAGE */}
         <Route

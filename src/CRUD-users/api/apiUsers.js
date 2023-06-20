@@ -48,7 +48,7 @@ export const updateUser = async (
         nickname,
         celular,
         correo
-        
+
       },
       { headers: { "x-token": token } }
     );
@@ -70,27 +70,28 @@ export const createUser = async ({
   DPI,
   direccion,
   celular,
+  img,
   trabajo,
   ingresos,
 }) => {
- 
+
   try {
     const response = await axios.post(
       `${URL}agregarUser`,
       {
-        nombre: nombre ,
-        correo: correo ,
-        nickname: nickname ,
-        password: password ,
-       DPI: DPI ,
-       direccion: direccion ,
-        celular: celular ,
-        trabajo: trabajo ,
+        nombre: nombre,
+        correo: correo,
+        nickname: nickname,
+        password: password,
+        DPI: DPI,
+        direccion: direccion,
+        celular: celular,
+        img: img,
+        trabajo: trabajo,
         ingresos: ingresos
       },
       { headers: { "x-token": token } }
     );
-    
     return true;
   } catch ({ response: { data } }) {
     Swal.fire({

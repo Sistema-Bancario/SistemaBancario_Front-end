@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { agregarFavorito, apiEliminarContacto, apiEliminarLista, apiFavoritos } from "./api/apiFavoritos";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { Card, Col, Row, Button, Modal, Form } from "react-bootstrap";
 import Swal from "sweetalert2";
 
@@ -11,6 +11,8 @@ export const Favoritos = () => {
   const [showModal, setShowModal] = useState(false);
   const [noCuentaEmisor, setNoCuentaEmisor] = useState("");
   const [nickname, setNickname] = useState("");
+  const navigate = useNavigate();
+  const [cuentaDestino, setCuentaDestino] = useState("");
 
   const getFavoritos = async () => {
     try {
@@ -34,8 +36,8 @@ export const Favoritos = () => {
     setShowModal(false);
   };
 
-  const handleFormSubmit = () => {
-    const agregarFav = agregarFavorito(favoritos._id, noCuentaEmisor, nickname);
+  const handleFormSubmit = async () => {
+    const agregarFav = await agregarFavorito(favoritos._id, noCuentaEmisor, nickname);
     if (agregarFav) {
       Swal.fire({
         icon: "success",
@@ -58,7 +60,7 @@ export const Favoritos = () => {
   const handleEliminarLista = async () => {
     const confirmacion = await Swal.fire({
       icon: "success",
-      title: "Estás seguro de eliminar toda la lista?",
+      title: "¿Estás seguro de eliminar toda la lista?",
       confirmButtonText: "Ok",
     });
 
@@ -67,8 +69,8 @@ export const Favoritos = () => {
       if (resultado) {
         Swal.fire({
           icon: "success",
-          title: "Se eliminó un favorito",
-          text: "Has eliminado un favorito",
+          title: "Se eliminó una lista de favoritos",
+          text: "Has eliminado una lista de favoritos",
           confirmButtonText: "Ok",
         }).then(() => {
           window.location.reload(); // Recargar la página
@@ -88,7 +90,7 @@ export const Favoritos = () => {
   const handleEliminarFavorito = async (c) => {
     const confirmacion = await Swal.fire({
       icon: "success",
-      title: "Estás seguro de eliminar este registro?",
+      title: "¿Estás seguro de eliminar este favorito?",
       confirmButtonText: "Ok",
     });
 
@@ -112,6 +114,13 @@ export const Favoritos = () => {
       }
     }
   };
+
+  const handleTransferirClick = (cuenta) => {
+    setCuentaDestino(cuenta);
+    navigate("/createTransaction"); // Navegar al componente "CreateTransaction"
+  };
+
+
 
   return (
     <div className="container mt-4 table-container">
@@ -147,6 +156,10 @@ export const Favoritos = () => {
                   <Button variant="danger" onClick={() => handleEliminarFavorito(c)}>
                     Eliminar
                   </Button>
+                  <Link className="btn btn-dark" to={`/transferirFav/${c.cuentas}`} onClick={() => handleTransferirClick(c.cuentas)}>
+                    Transferir
+                  </Link>
+
                 </Card.Footer>
               </Card>
             </Col>
@@ -185,10 +198,12 @@ export const Favoritos = () => {
             Cerrar
           </Button>
           <Button variant="primary" onClick={handleFormSubmit}>
-            Enviar
+            Agregar
           </Button>
         </Modal.Footer>
       </Modal>
     </div>
   );
 };
+
+export default Favoritos;

@@ -152,6 +152,23 @@ export const CreateUser = () => {
                             }
                         ></input>
                     </div>
+                    <div className="form-group">
+                        <label className="text-black">Imagen</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            name="img"
+                            required
+                            onChange={(event) =>
+                                setAgregar({
+                                    user: {
+                                        ...agregar.user,
+                                        img: event.target.value,
+                                    },
+                                })
+                            }
+                        ></input>
+                    </div>
 
                     <div className="form-group">
                         <label className="text-black">Trabajo</label>
