@@ -16,27 +16,34 @@ const NavbarAdmin = () => {
             <Link to="/ListaUsuarios" style={{ textDecoration: 'none' }}>
               <h1 className="sidebar-title">BAC CREDOMATIC</h1>
             </Link>
-            <div className="circle-image">
-              <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="fotoperfil" />
-            </div>
-            {localStorage.getItem("token") && (
-              <form className="w-25">
-                <Link
+            <div className="dropdown1">
+                <button className="btnle1">
+                  <div className="circle-image">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="fotoperfil" />
+                  </div>
+
+                 
+                </button>
+                <ul className='lista'>
+                  <a className="active"><Link to="/miPerfil">Mi Perfil</Link></a>
+                  <br />
+                  <a className="active"><Link
                   aria-current="page"
                   to="/"
                   onClick={() => logOut()}
                 >
-                  <Button
-                    color="warning"
+                  <Link
+                    
                     aria-current="page"
                     to="/"
                     onClick={() => logOut()}
                   >
                     Cerrar Sesion{" "}
-                  </Button>
-                </Link>
-              </form>
-            )}
+                  </Link>
+                </Link></a>
+                </ul>
+              </div>
+            
           </div>
 
           <nav className="sidebar-navigation">
