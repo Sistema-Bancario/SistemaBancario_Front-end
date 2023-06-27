@@ -1,100 +1,96 @@
-import React from 'react'
-import { useEffect, useState } from "react";
-import { apiUser } from '../../CRUD-users/api/apiUsers';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { apiAccount } from '../api/apiTransactions';
+import { Button } from 'react-bootstrap';
 
 export const HistorialTransaccion = () => {
-    const { id } = useParams();
-    const [error, setError] = useState(null);
-    const [showModal, setShowModal] = useState(false);
-    const [cuenta, setCuenta] = useState([])
-  console.log(cuenta);
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [error, setError] = useState(null);
+  const [cuenta, setCuenta] = useState(null);
+
+  useEffect(() => {
     const viewCuentas = async () => {
-        try {
-          const getCuentas = await apiAccount(id);
-          setCuenta(getCuentas);
-        } catch (error) {
-          setError(error);
-        }
-      };
-    useEffect(() => {
-        viewCuentas();
-      }, []);  
-  
-    const handleOpenModal = (user) => {
-      setShowModal(true);
-      setUsers(user);
+      try {
+        const getCuentas = await apiAccount(id);
+        setCuenta(getCuentas);
+      } catch (error) {
+        setError(error);
+      }
     };
-  
-    const handleCloseModal = () => {
-      setShowModal(false);
-    };
-  
-    if (error) {
-      return <div>Hubo un error al cargar los users : {error.message}</div>;
-    }
-  
-    return (
-      <>
-      <section id="promo" className="promo section offset-header ">
-          <div className="container text-center">
-            <br /><br />
-  
-            <h2 className="title">
-              Usuarios
-            </h2>
-            <p className="intro">Listado de los Usuarios</p>
-            <ul className="meta list-inline">
-              <li className="list-inline-item"></li>
-            </ul>
-          </div>
-        </section>
-  
-        <div className="container mt-4 mb-5 table-container">
-          <div className="table-responsive text-center">
 
-            {cuenta.length === 0 ? (
+    viewCuentas();
+  }, [id]);
 
-          <p>No hay créditos disponibles en este momento.</p>
+  if (error) {
+    return <div>Hubo un error al cargar los usuarios: {error.message}</div>;
+  }
 
-        ) : (
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
 
-          <table bordered>
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toISOString().substring(0, 10);
+  };
 
-<thead className="thead-dark">
-                <tr>
-                  <th scope="col">NoCuenta</th>
-                  <th scope="col">Saldo</th>
-                  <th scope="col">Transferencias</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr key={cuenta._id}>
-                  <td>{cuenta.numeroCuenta}</td>
-                  <td>{cuenta.saldo}</td>
-                  <td>
-                    {cuenta.transferencias.length === 0 ? (
-                      <p>No hay transferencias disponibles.</p>
-                    ) : (
-                      <ul>
-                        {cuenta.transferencias.map((transferencia) => (
-                          <li key={transferencia.id}>
-                            {/* Renderizar la información de cada transferencia */}
-                            {transferencia}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </td>
-                </tr>
-              </tbody>
+  const getTransactionMessage = (tipoTransaccion) => {
+    return tipoTransaccion === 'debito' ? 'Se te Debito' : 'Se te Acredito';
+  };
 
-          </table>
+  const handleRegresarClick = (cuentaItem) => {
+    navigate(`/buscarporNum/${cuentaItem.numeroCuenta}`);
+  };
 
-        )}
-          </div>
+  return (
+    <>
+      <section id="promo" className="promo section offset-header">
+        <div className="container text-center ">
+          <br /><br />
+          <h2 className="title">Historial de Transferencias</h2>
+          <p className="intro">Listado de las transferencias realizadas</p>
+          <ul className="meta list-inline">
+            <li className="list-inline-item"></li>
+          </ul>
         </div>
-      </>
-    );
-}
+      </section>
+
+      <div className="container mt-4 mb-5 offset-md-1">
+      <Button className='regresartransaccion' onClick={() => handleRegresarClick(cuenta[0])}>Regresar</Button>
+    <br /><br />
+        <div className="row">
+          {cuenta ? (
+            <>
+              {cuenta.length === 0 ? (
+                <p>No hay transferencias disponibles en este momento.</p>
+              ) : (
+                cuenta.map((cuentaItem) =>
+                  cuentaItem.transferencias.map((transferencia) => (
+                    <div key={transferencia._id} className="col-md-4">
+                      <div className="card mb-3">
+                        <div className={`card-header bg-${transferencia.tipoTransaccion === 'debito' ? 'danger' : 'success'} text-white`}>
+                          {formatDate(transferencia.fecha)}
+                        </div>
+                        <div className="card-body">
+                          <h5 className="card-title">NoCuenta: {cuentaItem.numeroCuenta}</h5>
+                          <p className="card-text">Tipo de Cuenta: {capitalizeFirstLetter(transferencia.tipoCuenta)}</p>
+                          <p className="card-text">{getTransactionMessage(transferencia.tipoTransaccion)}</p>
+                          <p className="card-text">Monto: {transferencia.monto}</p>
+                          <p className="card-text">Descripcion: {transferencia.descripcion}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                )
+              )}
+            </>
+          ) : (
+            <p>Cargando historial de transferencias...</p>
+          )}
+        </div>
+      </div>
+
+    </>
+  );
+};

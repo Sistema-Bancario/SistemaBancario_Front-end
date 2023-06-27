@@ -3,5 +3,7 @@ export const transaction = {
     cuentaDestino: "",
     monto: 0,
     fecha: new Date(),
-    tipoCuenta: ""
+    tipoCuenta: "",
+    descripcion: ""
 }
+

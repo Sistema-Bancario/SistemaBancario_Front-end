@@ -2,15 +2,35 @@
 import Bancoimg from "./assets/Banco.png"
 import Genteimg from "./assets/Gente.png"
 import paypng from "./assets/pay.png"
-import puntospng from "./assets/Puntos.png"
+import divisapng from "./assets/divisa.png"
 import bancapng from "./assets/banca.png"
 import tarjetaspng from "./assets/Tarjetas.png"
 import tarjetas1png from "./assets/Tarjetas1.png"
 import { Link } from 'react-router-dom';
 import Carousel from 'react-multi-carousel';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "react-multi-carousel/lib/styles.css";
+import axios from 'axios';
+
 export const HomePage = () => {
+
+    const [divisas, setDivisas] = useState(null);
+
+    useEffect(() => {
+        const obtenerDivisas = async () => {
+            try {
+                const respuesta = await axios.get('http://localhost:8080/api/divisa/mostrarDivisas');
+                setDivisas(respuesta.data.valores);
+            } catch (error) {
+                console.error(error);
+                // Manejo del error
+            }
+        };
+
+        obtenerDivisas();
+    }, []);
+
+
     const [mensaje, setMensaje] = useState('');
 
     const handleChange = (event) => {
@@ -19,8 +39,6 @@ export const HomePage = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Aquí puedes agregar la lógica para enviar el mensaje al servidor o hacer lo que desees con él
-        console.log(mensaje);
         setMensaje('');
     };
     const responsive = {
@@ -199,13 +217,20 @@ export const HomePage = () => {
                 <div className="row row-cols-1 row-cols-md-3 g-4">
                     <div className="col">
                         <div className="card h-100">
-                            <img src={puntospng} height="300px" className="card-img-top" alt="..." />
+                            <img src={divisapng} height="300px" className="card-img-top" alt="..." />
                             <div className="card-body">
-                                <h5 className="card-title">Programa de puntos</h5>
-                                <p className="card-text">Descubre todos los beneficios que te ofrece nuestro sistema de puntos al adquirir tu tarjeta KinalBridge</p>
+                                <h5 className="card-title">Consulta el cambio de moneda actual</h5>
+                                <p className="card-text">EL cambio a Dia de hoy esta a:</p>
                             </div>
                             <div className="card-footer">
                                 <small className="text-body-secondary">Last updated 3 mins ago</small>
+                                {divisas && (
+                                    <div>
+                                        <p>Dólar: {divisas.dolar}</p>
+                                        <p>Euro: {divisas.euro}</p>
+                                        <p>Libra: {divisas.libra}</p>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -281,7 +306,7 @@ export const HomePage = () => {
                                 <p className="card-text">Programa el monto de tu ahorro mensual y nosotros te ayudamos a personalizar tu plan al plazo que decidas.</p>
                             </div>
                             <div className="card-footer">
-                                <button type="button" class="btn btn-danger">Leer mas</button>
+                                <button type="button" className="btn btn-danger">Leer mas</button>
                             </div>
                         </div>
 
@@ -294,7 +319,7 @@ export const HomePage = () => {
                                 <p className="card-text">Programa el monto de tu ahorro mensual y nosotros te ayudamos a personalizar tu plan al plazo que decidas.</p>
                             </div>
                             <div className="card-footer">
-                                <button type="button" class="btn btn-danger">Leer mas</button>
+                                <button type="button" className="btn btn-danger">Leer mas</button>
                             </div>
                         </div>
 
@@ -307,7 +332,7 @@ export const HomePage = () => {
                                 <p className="card-text">Mantén tu dinero protegido, con disponibilidad inmediata y adquiere promociones y descuentos al usar tu tarjeta de débito.</p>
                             </div>
                             <div className="card-footer">
-                                <button type="button" class="btn btn-danger">Leer mas</button>
+                                <button type="button" className="btn btn-danger">Leer mas</button>
                             </div>
                         </div>
 
@@ -320,7 +345,7 @@ export const HomePage = () => {
                                 <p className="card-text">Fomenta el hábito de ahorro en tus hijos con seguridad y todos los beneficios que brinda KinalBridge.</p>
                             </div>
                             <div className="card-footer">
-                                <button type="button" class="btn btn-danger">Leer mas</button>
+                                <button type="button" className="btn btn-danger">Leer mas</button>
                             </div>
                         </div>
                     </div>
@@ -332,7 +357,7 @@ export const HomePage = () => {
                                 <p className="card-text">Programa el monto de tu ahorro mensual y nosotros te ayudamos a personalizar tu plan al plazo que decidas.</p>
                             </div>
                             <div className="card-footer">
-                                <button type="button" class="btn btn-danger">Leer mas</button>
+                                <button type="button" className="btn btn-danger">Leer mas</button>
                             </div>
                         </div>
 

@@ -6,7 +6,6 @@ import { Button } from "react-bootstrap";
 
 export const CreateAdmin = () => {
     const [agregar, setAgregar] = useState(usersAdmin);
-    console.log(agregar)
     const handleSubmit = (event) => {
         event.preventDefault();
         sendData(agregar, 1, 0);
@@ -27,6 +26,7 @@ export const CreateAdmin = () => {
                             type="text"
                             className="form-control"
                             name="nombre"
+                            required
                             onChange={(event) =>
                                 setAgregar({
                                     usersAdmin: {
@@ -41,9 +41,12 @@ export const CreateAdmin = () => {
                     <div className="form-group">
                         <label className="text-black">Correo</label>
                         <input
-                            type="text"
+                            type="email"
                             className="form-control"
                             name="correo"
+                            required
+                            id="inemail"
+                            title="Ingrese un correo válido |@|"
                             onChange={(event) =>
                                 setAgregar({
                                     usersAdmin: {
@@ -61,6 +64,7 @@ export const CreateAdmin = () => {
                             type="text"
                             className="form-control"
                             name="password"
+                            required
                             onChange={(event) =>
                                 setAgregar({
                                     usersAdmin: {

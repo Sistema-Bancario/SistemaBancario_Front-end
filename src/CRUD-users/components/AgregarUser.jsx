@@ -14,7 +14,7 @@ export const CreateUser = () => {
 
     return (
         <>
-            <div className="container table-container">
+           <div className="container table-container">
                 <br /><br />
                 <Link to="/ListaUsuarios"><Button className=''>Regresar</Button></Link>
                 <h1 id="create-tarea">Agregar Usuario</h1>
@@ -26,6 +26,7 @@ export const CreateUser = () => {
                             type="text"
                             className="form-control"
                             name="nombre"
+                            required
                             onChange={(event) =>
                                 setAgregar({
                                     user: {
@@ -40,9 +41,11 @@ export const CreateUser = () => {
                     <div className="form-group">
                         <label className="text-black">Correo</label>
                         <input
-                            type="text"
+                            type="email"
                             className="form-control"
-                            name="correo"
+                            id="inemail"
+                            aria-describedby="emailHelp"
+                            required
                             onChange={(event) =>
                                 setAgregar({
                                     user: {
@@ -60,6 +63,7 @@ export const CreateUser = () => {
                             type="text"
                             className="form-control"
                             name="nickname"
+                            required
                             onChange={(event) =>
                                 setAgregar({
                                     user: {
@@ -77,6 +81,7 @@ export const CreateUser = () => {
                             type="text"
                             className="form-control"
                             name="password"
+                            required
                             onChange={(event) =>
                                 setAgregar({
                                     user: {
@@ -94,6 +99,10 @@ export const CreateUser = () => {
                             type="text"
                             className="form-control"
                             name="dpi"
+                            inputMode="numeric"
+                            pattern="[0-9]{13}"
+                            title="El DPI debe tener 13 dígitos numéricos"
+                            required
                             onChange={(event) =>
                                 setAgregar({
                                     user: {
@@ -111,9 +120,10 @@ export const CreateUser = () => {
                             type="text"
                             className="form-control"
                             name="direccion"
+                            required
                             onChange={(event) =>
                                 setAgregar({
-                                user: {
+                                    user: {
                                         ...agregar.user,
                                         direccion: event.target.value,
                                     },
@@ -128,11 +138,32 @@ export const CreateUser = () => {
                             type="text"
                             className="form-control"
                             name="celular"
+                            inputMode="numeric"
+                            pattern="[0-9]{8}"
+                            title="El número de celular debe tener 8 dígitos numéricos"
+                            required
                             onChange={(event) =>
                                 setAgregar({
-                                user: {
+                                    user: {
                                         ...agregar.user,
                                         celular: event.target.value,
+                                    },
+                                })
+                            }
+                        ></input>
+                    </div>
+                    <div className="form-group">
+                        <label className="text-black">Imagen</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            name="img"
+                            required
+                            onChange={(event) =>
+                                setAgregar({
+                                    user: {
+                                        ...agregar.user,
+                                        img: event.target.value,
                                     },
                                 })
                             }
@@ -145,9 +176,10 @@ export const CreateUser = () => {
                             type="text"
                             className="form-control"
                             name="trabajo"
+                            required
                             onChange={(event) =>
                                 setAgregar({
-                                user: {
+                                    user: {
                                         ...agregar.user,
                                         trabajo: event.target.value,
                                     },
@@ -162,9 +194,13 @@ export const CreateUser = () => {
                             type="text"
                             className="form-control"
                             name="ingresos"
+                            inputMode="numeric"
+                            pattern="[0-9]*"
+                            title="Debe tener dígitos numéricos"
+                            required
                             onChange={(event) =>
                                 setAgregar({
-                                user: {
+                                    user: {
                                         ...agregar.user,
                                         ingresos: event.target.value,
                                     },

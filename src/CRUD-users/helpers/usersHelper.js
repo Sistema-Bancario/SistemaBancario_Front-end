@@ -13,6 +13,7 @@ export const sendData = async (state, option, _id) => {
         DPI: state.user.dpi,
         direccion: state.user.direccion,
         celular: state.user.celular,
+        img: state.user.img,
         trabajo: state.user.trabajo,
         ingresos: state.user.ingresos
   });

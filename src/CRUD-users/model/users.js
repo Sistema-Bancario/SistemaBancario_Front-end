@@ -7,6 +7,7 @@ export const user = {
     dpi: "",
     direccion: "",
     celular: 0,
+    img:"",
     trabajo: "",
     ingresos: 0 
 }

@@ -5,8 +5,6 @@ import { apiTransaction } from "../api/apiTransactions";
 export const ListaTransactions = () => {
     const [listaTransactions, setListaTransactions] = useState([]);
     const [error, setError] = useState(null);
-//    const [showModal, setShowModal] = useState(false);
-//    const [transactions, setTransactions] = useState(transaction);
 
     const viewTransactionsList = async () => {
         try {
@@ -25,14 +23,6 @@ export const ListaTransactions = () => {
         console.log(listaTransactions);
     }, [listaTransactions]);
     
-//    const handleOpenModal = (transaction) => {
-//        setShowModal(true);
-//        setTransactions(transaction);
-//    }
-
-//    const handleCloseModal = () => {
-//        setShowModal(false);
-//    }
 
     if (error) {
         return <div>Error en transaccion: {error.message}</div>

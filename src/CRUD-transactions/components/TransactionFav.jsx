@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { transaction } from '../model/transactions';
 import { sendData } from '../helpers/transactionsHelper';
-import { Link } from 'react-router-dom';
-import { Button, Modal } from "react-bootstrap";
+import { transaction } from '../model/transactions';
+import { Link, useParams } from 'react-router-dom';
+import { Button, Modal } from 'react-bootstrap';
 import { apiMisCuentas } from '../../Cuenta/api/apiCuentas';
 
-export const CreateTransaction = () => {
-    const [agregar, setAgregar] = useState(transaction);
+export const TransactionFav = () => {
+    const [agregar, setAgregar] = useState({ ...transaction });
+    const { cuentaDestino } = useParams();
     const [misCuentas, setMisCuentas] = useState([]);
     const [showModal, setShowModal] = useState(false);
 
@@ -21,25 +22,28 @@ export const CreateTransaction = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (agregar.transaction.monto <= 10000) {
-            sendData(agregar, 1, 0);
+        if (agregar.monto <= 10000) {
+            sendData(agregar, 2, cuentaDestino);
         } else {
             setShowModal(true);
         }
-    }
+    };
 
     const closeModal = () => {
         setShowModal(false);
     };
 
     return (
-        <div className='container table-container'>
-            <br /><br />
-            <Link to="/misCuentas"><Button className='regresartransaccion'>Regresar</Button></Link>
-            <h1 id='create-tarea'>Transferencia</h1>
+        <div className="container table-container">
+            <br />
+            <br />
+            <Link to="/misCuentas">
+                <Button className="regresartransaccion">Regresar</Button>
+            </Link>
+            <h1 id="create-tarea">Transferencia</h1>
 
             <form onSubmit={handleSubmit}>
-                <div className='form-group'>
+                <div className="form-group">
                     <label className="text-black">Cuenta Origen</label>
                     <select
                         className="form-control"
@@ -47,10 +51,8 @@ export const CreateTransaction = () => {
                         required
                         onChange={(event) =>
                             setAgregar({
-                                transaction: {
-                                    ...agregar.transaction,
-                                    cuentaOrigen: event.target.value,
-                                },
+                                ...agregar,
+                                cuentaOrigen: event.target.value,
                             })
                         }
                     >
@@ -62,26 +64,19 @@ export const CreateTransaction = () => {
                         ))}
                     </select>
                 </div>
-
-                <div className='form-group'>
+                <div className="form-group">
                     <label className="text-black">Cuenta Destino</label>
                     <input
                         type="text"
                         className="form-control"
                         name="cuentaDestino"
                         required
-                        onChange={(event) =>
-                            setAgregar({
-                                transaction: {
-                                    ...agregar.transaction,
-                                    cuentaDestino: event.target.value,
-                                },
-                            })
-                        }
+                        value={cuentaDestino}
+                        readOnly
                     />
                 </div>
 
-                <div className='form-group'>
+                <div className="form-group">
                     <label className="text-black">Monto</label>
                     <input
                         type="text"
@@ -92,16 +87,14 @@ export const CreateTransaction = () => {
                         required
                         onChange={(event) =>
                             setAgregar({
-                                transaction: {
-                                    ...agregar.transaction,
-                                    monto: event.target.value,
-                                },
+                                ...agregar,
+                                monto: Number(event.target.value),
                             })
                         }
                     />
                 </div>
 
-                <div className='form-group'>
+                <div className="form-group">
                     <label className="text-black">Tipo de Cuenta</label>
                     <select
                         type="text"
@@ -110,10 +103,8 @@ export const CreateTransaction = () => {
                         required
                         onChange={(event) =>
                             setAgregar({
-                                transaction: {
-                                    ...agregar.transaction,
-                                    tipoCuenta: event.target.value,
-                                },
+                                ...agregar,
+                                tipoCuenta: event.target.value,
                             })
                         }
                     >
@@ -123,7 +114,7 @@ export const CreateTransaction = () => {
                     </select>
                 </div>
 
-                <div className='form-group'>
+                <div className="form-group">
                     <label className="text-black">Descripción</label>
                     <input
                         type="text"
@@ -132,29 +123,23 @@ export const CreateTransaction = () => {
                         required
                         onChange={(event) =>
                             setAgregar({
-                                transaction: {
-                                    ...agregar.transaction,
-                                    descripcion: event.target.value,
-                                },
+                                ...agregar,
+                                descripcion: event.target.value,
                             })
                         }
                     />
                 </div>
 
-                <div className="container text-center">
-                    <button id="btn-enviar" type="submit" className="btn">
-                        Enviar
-                    </button>
-                </div>
+                <button className="btn btn-primary" type="submit">
+                    Transferir
+                </button>
             </form>
 
             <Modal show={showModal} onHide={closeModal}>
                 <Modal.Header closeButton>
                     <Modal.Title>Advertencia</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
-                    El monto no puede exceder los 10000.
-                </Modal.Body>
+                <Modal.Body>El monto no puede exceder los 10000.</Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={closeModal}>
                         Cerrar
@@ -164,3 +149,5 @@ export const CreateTransaction = () => {
         </div>
     );
 };
+
+export default TransactionFav;
