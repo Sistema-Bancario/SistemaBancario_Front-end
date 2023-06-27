@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { Button } from "react-bootstrap";
-
+import { Profile } from "./perfil/components/Profile";
 
 const NavbarUser = () => {
-   const logOut = () => {
+  const logOut = () => {
     localStorage.removeItem("token");
     window.location.href = "/";
   };
@@ -14,29 +14,39 @@ const NavbarUser = () => {
         <div id="sidebar">
           <div className="sidebar-header">
             {/* <Link to="/listaCuentas"> */}
-              <h1 className="sidebar-title">BAC CREDOMATIC</h1>
+            <h1 className="sidebar-title">BAC CREDOMATIC</h1>
             {/* </Link> */}
-            <div className="circle-image">
-              <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="fotoperfil" />
-            </div>
-            {localStorage.getItem("token") && (
-              <form className="w-25">
-                <Link
+
+            
+              <div className="dropdown1">
+                <button className="btnle1">
+                  <div className="circle-image">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="fotoperfil" />
+                  </div>
+
+                 
+                </button>
+                <ul className='lista'>
+                  <a className="active"><Link to="/miPerfil">Mi Perfil</Link></a>
+                  <br />
+                  <a className="active"><Link
                   aria-current="page"
                   to="/"
                   onClick={() => logOut()}
                 >
-                  <Button
-                    color="warning"
+                  <Link
+                    
                     aria-current="page"
                     to="/"
                     onClick={() => logOut()}
                   >
                     Cerrar Sesion{" "}
-                  </Button>
-                </Link>
-              </form>
-            )}
+                  </Link>
+                </Link></a>
+                </ul>
+              </div>
+            
+            
           </div>
 
           <nav className="sidebar-navigation">
@@ -54,17 +64,12 @@ const NavbarUser = () => {
                 </Link>
               </li>
               <li>
-                <Link className='botoagregarUsuarios' to="/createUser">
+                <Link className='botoagregarUsuarios' to="/ListaTransacciones">
                   <i className="fa fa-history"></i>
                   <span className="tooltip">Historial</span>
                 </Link>
               </li>
-              {/* <li>
-                <Link className='botoagregarUsuarios' to="/favoritos/:id">
-                  <i className="fa fa-star"></i>
-                  <span className="tooltip">Favoritos</span>
-                </Link>
-              </li> */}
+
             </ul>
           </nav>
 
