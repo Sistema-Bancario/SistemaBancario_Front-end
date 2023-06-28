@@ -29,16 +29,15 @@ const ListarAccount = () => {
         <Col>
           <div className="title-container">
             <h1 className="h1111">Mis Cuentas</h1>
+            
           </div>
         </Col>
       </Row>
-      <br />
-      <br />
+                 
 
       <div className="tariffCards">
         <br />
-        <br />
-
+        <br /><br /><br />
         {misCuentas.map((c, index) => (
           <div
             className={cardColors[index % cardColors.length]}

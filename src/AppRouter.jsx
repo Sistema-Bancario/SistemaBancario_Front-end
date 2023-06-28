@@ -31,8 +31,6 @@ export const AppRouter = () => {
     <BrowserRouter>
       <Routes>
 
-        <Route path="/miPerfil" element={<Profile />} />
-        {/* HOME PAGE --- PRINCIPAL */}
         <Route
           path="/"
           element={
@@ -54,36 +52,49 @@ export const AppRouter = () => {
         <Route
           path="/LoginUser"
           element={
-            !isUserAuthenticated() ? (
+            // !isUserAuthenticated() ? (
               <LoginUser />
-            ) : (
-              <Navigate to="/misCuentas" />
-            )
+            // ) : (
+            //   <Navigate to="/" />
+            // )
           }
         />
-
 
         <Route
           path="/misCuentas"
           element={
-            <>
-              <NavbarUser></NavbarUser>
-              <ListarAccount></ListarAccount>
+              <>
+                <NavbarUser></NavbarUser>
+                <ListarAccount></ListarAccount>
+              </>
+           
+          }
+        />
 
-            </>
+        <Route
+          path="/miPerfil"
+          element={
+            isUserAuthenticated() ? (
+              <>
+                <NavbarUser />
+                <Profile />
+              </>
+            ) : (
+              <Navigate to="/LoginUser" />
+            )
           }
         />
 
         <Route
           path="/buscarporNum/:id"
           element={
-            isAuthenticated() ? (
+            isUserAuthenticated() ? (
               <>
                 <NavbarUser />
                 <VerCuentaDetalle />
               </>
             ) : (
-              <Navigate to="/UserPage" />
+              <Navigate to="/LoginUser" />
             )
           }
         />
@@ -91,25 +102,28 @@ export const AppRouter = () => {
         <Route
           path="/transferirFav/:cuentaDestino"
           element={
-            isAuthenticated() ? (
+            isUserAuthenticated() ? (
               <>
                 <NavbarUser />
                 <TransactionFav />
               </>
             ) : (
-              <Navigate to="/UserPage" />
+              <Navigate to="/LoginUser" />
             )
           }
         />
 
         <Route path="/favoritos/:id"
           element={
-            <>
-              <NavbarUser></NavbarUser>
-              <Favoritos />
+            isUserAuthenticated() ? (
+              <>
+                <NavbarUser></NavbarUser>
+                <Favoritos />
 
-            </>
-
+              </>
+            ) : (
+              <Navigate to="/LoginUser" />
+            )
           }
         />
 
@@ -118,13 +132,13 @@ export const AppRouter = () => {
         <Route
           path="/ListaTransacciones"
           element={
-            isAuthenticated() ? (
+            isUserAuthenticated() ? (
               <>
                 <NavbarUser />
                 <ListaTransactions />
               </>
             ) : (
-              <Navigate to="/UserPage" />
+              <Navigate to="/LoginUser" />
             )
           }
         />
@@ -132,29 +146,30 @@ export const AppRouter = () => {
         <Route
           path="/createTransaction"
           element={
-            isAuthenticated() ? (
+            isUserAuthenticated() ? (
               <>
                 <NavbarUser />
                 <CreateTransaction />
               </>
             ) : (
-              <Navigate to="/UserPage" />
+              <Navigate to="/LoginUser" />
             )
           }
         />
 
         <Route path="/historial/:id"
           element={
-            isAuthenticated() ? (
+            isUserAuthenticated() ? (
               <>
                 <NavbarUser />
                 <HistorialTransaccion />
               </>
             ) : (
-              <Navigate to="/UserPage" />
+              <Navigate to="/LoginUser" />
             )
           }
         />
+
 
         {/* ADMIN PAGE */}
         <Route
@@ -181,14 +196,16 @@ export const AppRouter = () => {
         <Route
           path="/CuentasMasMovimiento/:userId"
           element={
-            <>
-              <NavbarAdmin></NavbarAdmin>
-              <ListaAccountMasMovimiento />
-            </>
+            isAuthenticated() ? (
+              <>
+                <NavbarAdmin></NavbarAdmin>
+                <ListaAccountMasMovimiento />
+              </>
+            ) : (
+              <Navigate to="/LoginAdminUser" />
+            )
           }
         />
-
-
 
         <Route
           path="/ListaUsuarios"
@@ -206,11 +223,15 @@ export const AppRouter = () => {
 
         <Route path="/createAccount"
           element={
-            <>
-              <NavbarAdmin></NavbarAdmin>
-              <CreateAccount></CreateAccount>
-            </>
+            isAuthenticated() ? (
 
+              <>
+                <NavbarAdmin></NavbarAdmin>
+                <CreateAccount></CreateAccount>
+              </>
+            ) : (
+              <Navigate to="/LoginAdminUser" />
+            )
           }
         />
 

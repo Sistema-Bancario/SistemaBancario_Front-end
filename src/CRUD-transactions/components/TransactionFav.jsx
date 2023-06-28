@@ -129,7 +129,7 @@ export const TransactionFav = () => {
                         }
                     />
                 </div>
-
+                        <br /><br />
                 <button className="btn btn-primary" type="submit">
                     Transferir
                 </button>

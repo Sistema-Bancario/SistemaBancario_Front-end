@@ -92,12 +92,12 @@ export const Profile = () => {
                 >
                   <i className="fa fa-user"></i> Editar
                 </button>
-                <button
+                {/* <button
                   className="btn btn-danger"
                   onClick={eliminarUser}
                 >
                   <i className="fa fa-trash"></i> Eliminar
-                </button>
+                </button> */}
               </div>
             </div>
           </div>

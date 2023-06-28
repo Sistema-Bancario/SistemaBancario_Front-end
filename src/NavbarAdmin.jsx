@@ -25,8 +25,6 @@ const NavbarAdmin = () => {
                  
                 </button>
                 <ul className='lista'>
-                  <a className="active"><Link to="/miPerfil">Mi Perfil</Link></a>
-                  <br />
                   <a className="active"><Link
                   aria-current="page"
                   to="/"

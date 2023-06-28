@@ -157,12 +157,14 @@
     .navbar .menu-items {
       padding-top: 100px;
       background: #fff;
-      height: 100vh;
-      max-width: 300px;
-      transform: translate(-150%);
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
       display: flex;
       flex-direction: column;
-      margin-left: -40px;
       padding-left: 40px;
       transition: transform 0.5s ease-in-out;
       box-shadow: 5px 0px 10px 0px #aaa;
@@ -393,7 +395,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
-    background: #ff0606;
+    background: #712a2a;
     min-width: 120px;
     border: 0;
     border-radius: 4px;
@@ -683,7 +685,6 @@
     background-color: #ea4c89
   }
 
-  }
 
   @media (max-width:767px) {
     .site-footer {
@@ -1056,7 +1057,6 @@
     text-align: center;
   }
 
-  }
 
   @media (max-width: 768px) {
     .table-container {
@@ -1212,12 +1212,17 @@
 
   .tariffCards {
     position: absolute;
-    top: 50%;
     left: 50%;
     margin: -180px 0 0 -140px;
     user-select: none;
     transform: translate3d(0, 0, 0);
     transform-style: preserve-3d;
+  }
+
+  @media (max-width: 768px) {
+    .tariffCards {
+      top: 70%; /* Ajusta este valor según tu necesidad */
+    }
   }
 
   .tariffCards:after {
@@ -1637,3 +1642,39 @@
   .transferir:hover {
     background-color: #0056b3;
   }
+
+  .grid-list {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Cambio realizado aquí */
+    grid-gap: 20px;
+  }
+  
+  .grid-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .button-container button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #337ab7;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .button-container button:hover {
+    background-color: #23527c;
+  }
+  

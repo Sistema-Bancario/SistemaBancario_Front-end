@@ -12,7 +12,6 @@ export const formSchema = Yup.object().shape({
 export const formOptions = { resolver: yupResolver(formSchema) };
 
 export const sendData = async (state, option, id) => {
-    console.log(state)
   let resultado;
   switch (option) {
     case 1:

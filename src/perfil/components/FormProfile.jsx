@@ -3,7 +3,6 @@ import { sendData } from "../helpers/FormProfileHelper";
 
 export const FormProfile = (profileEdit, option, id) => {
   const [state, setState] = useState(profileEdit);
-console.log(state);
   const handleSubmit = (event) => {
     event.preventDefault();
     sendData(state, 2, id);

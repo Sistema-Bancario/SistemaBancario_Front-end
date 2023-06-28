@@ -21,25 +21,39 @@ const ListaAccountMasMovimiento = () => {
         setOrden(nuevoOrden);
     };
 
+    const capitalizeFirstLetter = (string) => {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      };
+
     return (
         <>
             <div className="container mt-4 mb-5 table-container">
-            <Link to="/ListaUsuarios"><Button className=''>Regresar</Button></Link>
+                <Link to="/ListaUsuarios">
+                    <Button className="">Regresar</Button>
+                </Link>
                 <h1 id="create-tarea">Lista de cuentas con más movimiento</h1>
-                <button onClick={() => cambiarOrden('asc')}>Orden Ascendente</button>
-                <button onClick={() => cambiarOrden('desc')}>Orden Descendente</button>
-                    <br /><br />
-                <ul>
-                    {cuentas.map((cuenta, index) => {
-                        return (
-                            <td key={index}>
-                                Número de cuenta: {cuenta.numeroCuenta} -
-                                Cantidad de transferencias: {cuenta.cantidadTransferencias}
-                            </td>
-                        );
-                    })}
+                <br />
+                <div className="button-container">
+                    <button onClick={() => cambiarOrden('asc')}>Orden Ascendente</button>
+                    <button onClick={() => cambiarOrden('desc')}>Orden Descendente</button>
+                </div>
+
+                <br /><br />
+                <ul className="grid-list">
+                    {cuentas.map((cuenta, index) => (
+                        <li key={index}>
+                            <div className="grid-item">
+                                <label>Número de cuenta:</label> {cuenta.numeroCuenta} <br />
+                                <label>Tipo de Cuenta:</label> {capitalizeFirstLetter(cuenta.tipoCuenta)} <br />
+                                <label>Cantidad de transferencias:</label> {cuenta.cantidadTransferencias}
+                            </div>
+                        </li>
+                    ))}
                 </ul>
             </div>
+
+
+
         </>
     );
 };
