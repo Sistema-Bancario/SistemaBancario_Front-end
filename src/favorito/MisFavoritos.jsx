@@ -11,6 +11,8 @@ export const Favoritos = () => {
   const [showModal, setShowModal] = useState(false);
   const [noCuentaEmisor, setNoCuentaEmisor] = useState("");
   const [nickname, setNickname] = useState("");
+  const [tipoCuenta, setTipoCuenta] = useState("");
+
   const navigate = useNavigate();
   const [cuentaDestino, setCuentaDestino] = useState("");
 
@@ -37,7 +39,7 @@ export const Favoritos = () => {
   };
 
   const handleFormSubmit = async () => {
-    const agregarFav = await agregarFavorito(favoritos._id, noCuentaEmisor, nickname);
+    const agregarFav = await agregarFavorito(favoritos._id, noCuentaEmisor, nickname, tipoCuenta);
     if (agregarFav) {
       Swal.fire({
         icon: "success",
@@ -119,9 +121,6 @@ export const Favoritos = () => {
     setCuentaDestino(cuenta);
     navigate("/createTransaction"); // Navegar al componente "CreateTransaction"
   };
-
-
-
   return (
     <div className="container mt-4 table-container">
       <Link to={`/buscarporNum/${id}`} className="btn btn-primary">
@@ -182,6 +181,19 @@ export const Favoritos = () => {
                 onChange={(e) => setNoCuentaEmisor(e.target.value)}
               />
             </Form.Group>
+            <Form.Group className="mb-3" controlId="TipoCuenta">
+              <Form.Label>Tipo de Cuenta</Form.Label>
+              <Form.Control
+                as="select"
+                value={tipoCuenta}
+                onChange={(e) => setTipoCuenta(e.target.value)}
+              >
+                <option value="">Selecciona una cuenta</option>
+                <option value="ahorro">Ahorro</option>
+                <option value="monetaria">Monetaria</option>
+              </Form.Control>
+            </Form.Group>
+
             <Form.Group className="mb-3" controlId="nickname">
               <Form.Label>Nickname</Form.Label>
               <Form.Control

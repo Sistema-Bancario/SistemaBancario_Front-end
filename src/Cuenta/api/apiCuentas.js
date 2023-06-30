@@ -53,19 +53,28 @@ export const createAccount = async ({
     );
     return true
 
-  } catch ({ response: { data } }) {
-    Swal.fire({
-      icon: "error",
-      title: "Ocurrió un error",
-      text: "No se pudo agregar la cuenta al usuario",
-    })
-
-
+  } catch (error) {
+    if (error.response) {
+      const { message } = error.response.data;
+      if (error.response.status === 400) {
+        Swal.fire({
+          icon: "error",
+          title: "Error al crear la cuenta",
+          text: message,
+        });
+      } 
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Ocurrió un error",
+        text: "No se pudo agregar la cuenta al usuario",
+      });
+    }
   }
 
 };
 
-
+// ({ response: { data } }) 
 export const CuentasconMasMovimiento = async (userId, orden) => {
   try {
     const response = await axios.get(`${URL}mostrarCuentasConMasTransferencias/${userId}?orden=${orden}`, {

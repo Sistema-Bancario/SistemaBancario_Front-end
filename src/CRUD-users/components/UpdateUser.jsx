@@ -17,7 +17,7 @@ export const UpdateUsers = ({ isOpen, onClose, userEdit }) => {
           <Modal.Body>
             <FormUser
               user={userEdit}
-              id={userEdit._id} // Asegúrate de que el valor de 'id' sea correcto
+              id={userEdit._id} 
               option={2}
             />
 

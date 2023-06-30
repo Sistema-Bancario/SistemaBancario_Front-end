@@ -13,16 +13,18 @@ export const FormProfile = (profileEdit, option, id) => {
       <div className="form-group">
         <label className="text-black">Correo</label>
         <input
-          type="text"
+          type="email"
           className="form-control"
-          name="correo"
+          id="inemail"
+          aria-describedby="emailHelp"
+          required
           value={state.profile.correo}
           onChange={(event) =>
             setState({
-                profile:{
+              profile: {
                 ...state.profile,
                 correo: event.target.value,
-            }
+              }
             })
           }
         />
@@ -35,10 +37,11 @@ export const FormProfile = (profileEdit, option, id) => {
           name="password"
           onChange={(event) =>
             setState({
-                profile:{
+              profile: {
                 ...state.profile,
                 password: event.target.value,
-            }})
+              }
+            })
           }
         ></input>
       </div>
@@ -46,16 +49,21 @@ export const FormProfile = (profileEdit, option, id) => {
       <div className="form-group">
         <label className="text-black">Celular</label>
         <input
+          type="text"
           className="form-control"
-          type="number"
-          value={state.profile.celular}
           name="celular"
+          inputMode="numeric"
+          pattern="[0-9]{8}"
+          title="El número de celular debe tener 8 dígitos numéricos"
+          required
+          value={state.profile.celular}
           onChange={(event) =>
             setState({
-                profile:{
+              profile: {
                 ...state.profile,
                 celular: event.target.value,
-            }})
+              }
+            })
           }
         ></input>
       </div>
@@ -69,14 +77,15 @@ export const FormProfile = (profileEdit, option, id) => {
           name="img"
           onChange={(event) =>
             setState({
-                profile:{
+              profile: {
                 ...state.profile,
                 img: event.target.value,
-            }})
+              }
+            })
           }
         ></input>
       </div>
-      
+
       <div className="container text-center">
         <button id="btn-enviar" type="submit" className="btn btn-success mt-2">
           Enviar

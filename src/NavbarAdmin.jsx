@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "react-bootstrap";
 
-
 const NavbarAdmin = () => {
   const logOut = () => {
     localStorage.removeItem("token");
     window.location.href = "/";
   };
+
   return (
     <>
       <div className="contaaainer">
@@ -17,36 +17,28 @@ const NavbarAdmin = () => {
               <h1 className="sidebar-title">BAC CREDOMATIC</h1>
             </Link>
             <div className="dropdown1">
-                <button className="btnle1">
-                  <div className="circle-image">
-                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="fotoperfil" />
-                  </div>
-
-                 
-                </button>
-                <ul className='lista'>
-                  <a className="active"><Link
-                  aria-current="page"
-                  to="/"
-                  onClick={() => logOut()}
-                >
+              <button className="btnle1">
+                <div className="circle-image">
+                  <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="fotoperfil" />
+                </div>
+              </button>
+              <ul className='lista'>
+                <li className="active">
                   <Link
-                    
                     aria-current="page"
                     to="/"
                     onClick={() => logOut()}
                   >
-                    Cerrar Sesion{" "}
+                    Cerrar Sesion
                   </Link>
-                </Link></a>
-                </ul>
-              </div>
-            
+                </li>
+              </ul>
+            </div>
           </div>
 
           <nav className="sidebar-navigation">
             <ul>
-              <li >
+              <li>
                 <Link className='botoagregarUsuarios' to="/createUser">
                   <i className="fa fa-user-plus"></i>
                   <span className="tooltip">Agregar Usuarios</span>
@@ -59,12 +51,11 @@ const NavbarAdmin = () => {
                 </Link>
               </li>
               <li>
-                <Link className='botoagregarUsuarios' to="/createAccount  ">
+                <Link className='botoagregarUsuarios' to="/createAccount">
                   <i className="fa fa-plus-circle"></i>
                   <span className="tooltip">Crear Cuenta</span>
                 </Link>
               </li>
-
               <li>
                 <Link className='botoagregarUsuarios' to="/createUserAdmin">
                   <i className="fa fa-user-plus"></i>

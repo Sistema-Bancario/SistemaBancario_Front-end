@@ -1,18 +1,31 @@
 import React, { useState } from 'react';
 import { account } from "../model/accounts";
 import { Link } from 'react-router-dom';
-import { Button } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import { sendData } from '../helpers/cuentasHelper';
 
 export const CreateAccount = () => {
   const [agregar, setAgregar] = useState(account);
+  const [showModal, setShowModal] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(agregar.account.tipoCuenta)
-    sendData(agregar, 1, 0);
+    sendData(agregar, 1, 0).catch((error) => {
+      if (error.response) {
+        const { message } = error.response.data;
+        setErrorMessage(message);
+      } else {
+        setErrorMessage("No se pudo agregar la cuenta al usuario");
+      }
+      setShowModal(true);
+    });
   };
 
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setErrorMessage('');
+  };
   return (
     <>
       <div className="container table-container">
@@ -87,6 +100,20 @@ export const CreateAccount = () => {
           <br /><br />
         </form>
       </div>
+
+      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Error al crear la cuenta</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>{errorMessage}</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Cerrar
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };

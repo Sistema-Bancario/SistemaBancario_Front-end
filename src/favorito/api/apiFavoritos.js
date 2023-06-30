@@ -5,19 +5,19 @@ const token = localStorage.getItem("token");
 export const apiFavoritos = async (id) => {
   try {
     const listaFavoritos = await axios.get(`${URL}mostrar/${id}`,);
-    console.log(listaFavoritos.data);
     return listaFavoritos.data;
   } catch (error) {
     console.log(error);
   }
 };
 
-export const agregarFavorito = async (id, noCuentaUsuario, nickname) => {
+export const agregarFavorito = async (id, noCuentaUsuario, nickname, tipoCuenta) => {
   console.log(noCuentaUsuario);
   try {
     const listaUsuarios = await axios.post(`${URL}agregarContacto/${id}`, {
       noCuentaUsuario: noCuentaUsuario,
       nickname: nickname,
+      tipoCuenta: tipoCuenta
     });
     console.log(listaUsuarios.data.msg);
     return listaUsuarios.data;

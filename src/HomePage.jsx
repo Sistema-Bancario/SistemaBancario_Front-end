@@ -187,7 +187,7 @@ export const HomePage = () => {
                         <div className="carousel-item active">
                             <img src={Bancoimg} height="700px" className="d-block w-100 img-slider" alt="" />
                             <div className='text-img'><span className='text-hero'><p>Contamos con multiples agencias en todo el país, visitanos cuando tu desees.</p>
-                                <p>Estamos al alcanse de todos, visitanos en tu centro mas cercano. KinalBridge a tu alcance.</p></span></div>
+                                <p>Estamos al alcanse de todos, visitanos en tu centro mas cercano. BAC CREDOMATIC a tu alcance.</p></span></div>
                         </div>
                         <div className="carousel-item">
                             <img src={Genteimg} height="700px" className="d-block w-100 img-slider" alt="" />
@@ -212,7 +212,7 @@ export const HomePage = () => {
             </div>
             <br />
             <div className='container'>
-                <h2>Beneficios Exclusivos de KinalBridge</h2>
+                <h2>Beneficios Exclusivos de BAC CREDOMATIC</h2>
                 <br />
                 <div className="row row-cols-1 row-cols-md-3 g-4">
                     <div className="col">
@@ -264,7 +264,7 @@ export const HomePage = () => {
             <div className='container'>
                 <div className="clearfix">
                     <h2>Tu banco Digital</h2>
-                    <img src={tarjetas1png} className="col-md-6 float-md-end mb-3 ms-md-3" alt="..." />
+                    <img src={tarjetas1png} className="col-md-6 float-md-end mb-3 ms-md-3 img-fluid" alt="..." />
 
                     <p>
                         ¡La Tarjeta con la que recibes más! Acumula 5% de Walmart Cash por cada compra que realices en Walmart, Paiz, Maxi Despensa y Despensa Familiar. Además aprovecha los exclusivos beneficios que te ofrecemos como promociones mensuales y membresía sin costo. Y recuerda cuando compres productos electrónicos en Walmart y Maxi Despensa te duplicamos la garantía hasta por 12 meses dependiendo de la categoría de tu tarjeta.
@@ -279,6 +279,7 @@ export const HomePage = () => {
                     </p>
                 </div>
             </div>
+
             <br />
             <br />
             <div className='container'>
@@ -342,7 +343,7 @@ export const HomePage = () => {
                             <img src="https://www.baccredomatic.com/sites/default/files/styles/real_estate_640x360/public/2022-07/cr-image-cuentas-infantil-juniorcard.jpg?itok=mfuAraFK" height="300px" className="card-img-top" alt="..." />
                             <div className="card-body">
                                 <h5 className="card-title">Ahorro Infantil</h5>
-                                <p className="card-text">Fomenta el hábito de ahorro en tus hijos con seguridad y todos los beneficios que brinda KinalBridge.</p>
+                                <p className="card-text">Fomenta el hábito de ahorro en tus hijos con seguridad y todos los beneficios que brinda BAC CREDOMATIC.</p>
                             </div>
                             <div className="card-footer">
                                 <button type="button" className="btn btn-danger">Leer mas</button>
@@ -424,17 +425,27 @@ export const HomePage = () => {
 
 
             </div>
-            <div className="mensaje-cliente">
-                <h2>Envíanos un mensaje</h2>
-                <form onSubmit={handleSubmit}>
-                    <textarea
-                        placeholder="Escribe tu mensaje aquí"
-                        value={mensaje}
-                        onChange={handleChange}
-                    ></textarea>
-                    <button type="submit">Enviar</button>
-                </form>
+            <div className="mensaje-cliente container-md">
+                <div className="row justify-content-center">
+                    <div className="col-md-8 col-lg-6">
+                        <h2>Envíanos un mensaje</h2>
+                        <form onSubmit={handleSubmit}>
+                            <div className="mb-3">
+                                <textarea
+                                    className="form-control"
+                                    placeholder="Escribe tu mensaje aquí"
+                                    value={mensaje}
+                                    onChange={handleChange}
+                                ></textarea>
+                            </div>
+                            <div className="text-center">
+                                <button type="submit" className="btn btn-primary">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
+
             <footer className="site-footer">
                 <div className="container">
                     <div className="row">
@@ -456,7 +467,7 @@ export const HomePage = () => {
                         </div>
 
                         <div className="col-xs-6 col-md-3">
-                            <h6>Acerca de KinalBridge</h6>
+                            <h6>Acerca de BAC CREDOMATIC</h6>
                             <ul className="footer-links">
                                 <li><a href="http://scanfcode.com/about/">Nuestra Empresa</a></li>
                                 <li><a href="http://scanfcode.com/contact/">Nuestra Historia</a></li>
@@ -472,7 +483,7 @@ export const HomePage = () => {
                     <div className="row">
                         <div className="col-md-8 col-sm-6 col-xs-12">
                             <p className="copyright-text">Todos los derechos reservados. 2023&copy;
-                                <a href="#">KinalBridge Banco Internacional.</a>.
+                                <a href="#">BAC CREDOMATIC Banco Internacional.</a>.
                             </p>
                         </div>
 
