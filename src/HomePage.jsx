@@ -19,7 +19,7 @@ export const HomePage = () => {
     useEffect(() => {
         const obtenerDivisas = async () => {
             try {
-                const respuesta = await axios.get('http://localhost:8080/api/divisa/mostrarDivisas');
+                const respuesta = await axios.get('https://sistema-bancario-backend.vercel.app/api/divisa/mostrarDivisas');
                 setDivisas(respuesta.data.valores);
             } catch (error) {
                 console.error(error);
