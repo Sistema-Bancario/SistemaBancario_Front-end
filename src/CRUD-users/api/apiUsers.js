@@ -2,7 +2,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const token = localStorage.getItem("token");
-const URL = "http://localhost:8080/api/users/";
+const URL = "https://sistema-bancario-backend.vercel.app/api/users/";
 
 export const apiUser = async () => {
   try {

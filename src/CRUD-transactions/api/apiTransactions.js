@@ -3,8 +3,8 @@ import Swal from "sweetalert2";
 
 
 const token = localStorage.getItem("token");
-const URL = "http://localhost:8080/api/transactions/";
-const URL_CUENTAS = "http://localhost:8080/api/accounts/";
+const URL = "https://sistema-bancario-backend.vercel.app/api/transactions/";
+const URL_CUENTAS = "https://sistema-bancario-backend.vercel.app/api/accounts/";
 
 export const apiTransaction = async () => {
     try {

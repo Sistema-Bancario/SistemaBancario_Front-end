@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 
 export const apiLoginAdmin = async (correo, password) => {
   try {
-    const URL = "http://localhost:8080/api/auth/loginAdmin";
+    const URL = "https://sistema-bancario-backend.vercel.app/api/auth/loginAdmin";
 
     const response = await axios.post(URL, {
       correo,

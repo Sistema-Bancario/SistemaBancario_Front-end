@@ -53,7 +53,7 @@ export const AppRouter = () => {
           path="/LoginUser"
           element={
             // !isUserAuthenticated() ? (
-              <LoginUser />
+            <LoginUser />
             // ) : (
             //   <Navigate to="/" />
             // )
@@ -63,11 +63,11 @@ export const AppRouter = () => {
         <Route
           path="/misCuentas"
           element={
-              <>
-                <NavbarUser></NavbarUser>
-                <ListarAccount></ListarAccount>
-              </>
-           
+            <>
+              <NavbarUser></NavbarUser>
+              <ListarAccount></ListarAccount>
+            </>
+
           }
         />
 

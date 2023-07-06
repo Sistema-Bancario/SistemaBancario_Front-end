@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL = "http://localhost:8080/api/favorites/";
+const URL = "https://sistema-bancario-backend.vercel.app/favorites/";
 const token = localStorage.getItem("token");
 
 export const apiFavoritos = async (id) => {

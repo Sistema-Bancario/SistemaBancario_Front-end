@@ -1,5 +1,5 @@
 import axios from "axios";
-const URL = "http://localhost:8080/api/users/";
+const URL = "https://sistema-bancario-backend.vercel.app/api/users/";
 const token = localStorage.getItem("token");
 
 export const apiUsuarioById = async () => {
